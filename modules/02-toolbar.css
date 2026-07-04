@@ -88,14 +88,7 @@
    compact mode without overlapping tabs.
    ============================================================================ */
 
-/* Ensure title bar buttons don't get clipped in compact mode */
-.titlebar-buttonbox-container {
-  align-items: center !important;
-}
-
-.titlebar-button {
-  padding-block: 0 !important;
-}
+/* Removed custom titlebar button constraints to restore native full-height hover effects */
 
 /* ============================================================================
    TOOLBAR OVERFLOW BUTTON
