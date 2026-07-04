@@ -176,6 +176,12 @@
   --toolbarseparator-color: var(--uc-separator-color) !important;
 }
 
+/* Disable flexible spaces (spacers) on the tab bar to force tabs to the left */
+#TabsToolbar toolbarspring {
+  display: none !important;
+}
+
+
 
 /* ============================================================================
    TABS — Tab Preview Panel
