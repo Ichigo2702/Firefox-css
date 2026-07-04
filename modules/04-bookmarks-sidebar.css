@@ -1,0 +1,168 @@
+/* ============================================================================
+   04-bookmarks-sidebar.css — Bookmarks Toolbar & Sidebar
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Controls: auto-hide bookmarks toolbar, centered bookmarks, smooth slide,
+   sidebar animation, collapsible sidebar, sidebar header styling.
+   ============================================================================ */
+
+
+/* ============================================================================
+   BOOKMARKS TOOLBAR — Auto-Hide with Smooth Slide
+   ============================================================================
+   The bookmarks toolbar is hidden by default and slides down smoothly
+   when hovering over the navigator toolbox area.
+   Uses rotateX for a clean 3D fold effect (from MrOtherGuy's pattern).
+   ============================================================================ */
+
+#PersonalToolbar {
+  --uc-bm-height: 20px;
+  --uc-bm-padding: var(--uc-space-4);
+  --uc-autohide-delay: 300ms;
+
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    max-height var(--uc-duration-normal) var(--uc-ease-decelerate),
+    opacity var(--uc-duration-fast) var(--uc-ease-standard),
+    transform var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+/* Show on hover over entire toolbar area */
+#navigator-toolbox:hover > #PersonalToolbar {
+  max-height: 40px !important;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0ms;
+}
+
+/* Prevent hiding while interacting with bookmark menus */
+#PersonalToolbar:focus-within {
+  max-height: 40px !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================================
+   BOOKMARKS — Centered Items
+   ============================================================================
+   Centers bookmark items within the toolbar.
+   ============================================================================ */
+
+#PlacesToolbarItems {
+  justify-content: center !important;
+}
+
+
+/* ============================================================================
+   BOOKMARKS — Item Styling
+   ============================================================================
+   Rounded hover states, consistent spacing.
+   ============================================================================ */
+
+/* Bookmark toolbar items */
+#PersonalToolbar .bookmark-item {
+  border-radius: var(--uc-radius-buttons) !important;
+  padding: var(--uc-space-2) var(--uc-space-6) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#PersonalToolbar .bookmark-item:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+#PersonalToolbar .bookmark-item:hover:active {
+  background-color: var(--uc-active-bg) !important;
+}
+
+
+/* ============================================================================
+   BOOKMARKS — Folder Popup
+   ============================================================================
+   Rounded bookmark folder dropdown menus.
+   ============================================================================ */
+
+#PlacesToolbarItems menupopup {
+  border-radius: var(--uc-radius-menus) !important;
+  padding: var(--uc-space-4) !important;
+  box-shadow: var(--uc-shadow-2) !important;
+}
+
+#PlacesToolbarItems menupopup menuitem {
+  border-radius: var(--uc-radius-buttons) !important;
+  padding-block: var(--uc-space-4) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#PlacesToolbarItems menupopup menuitem:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+
+/* ============================================================================
+   SIDEBAR — Smooth Animation
+   ============================================================================
+   Sidebar slides in/out with a smooth transition.
+   ============================================================================ */
+
+#sidebar-box {
+  min-width: 0 !important;
+  transition:
+    min-width var(--uc-duration-normal) var(--uc-ease-decelerate),
+    width var(--uc-duration-normal) var(--uc-ease-decelerate),
+    max-width var(--uc-duration-normal) var(--uc-ease-decelerate),
+    opacity var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+/* Sidebar splitter — thin, modern */
+#sidebar-splitter {
+  width: 1px !important;
+  border: none !important;
+  background-color: var(--uc-separator-color) !important;
+  min-width: 1px !important;
+}
+
+/* Sidebar splitter hover — subtle expand */
+#sidebar-splitter:hover {
+  width: 3px !important;
+  background-color: var(--uc-accent-color) !important;
+  transition: width var(--uc-duration-micro) var(--uc-ease-standard),
+    background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   SIDEBAR — Header
+   ============================================================================
+   Cleaner sidebar header with better spacing.
+   ============================================================================ */
+
+#sidebar-header {
+  padding: var(--uc-space-4) var(--uc-space-8) !important;
+  border-bottom: 1px solid var(--uc-separator-color) !important;
+  font-size: var(--uc-font-md) !important;
+}
+
+/* Sidebar close button */
+#sidebar-close {
+  border-radius: var(--uc-radius-buttons) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#sidebar-close:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+
+/* ============================================================================
+   SIDEBAR — Content Area
+   ============================================================================
+   Rounded content area within sidebar.
+   ============================================================================ */
+
+#sidebar {
+  border-radius: var(--uc-radius-buttons) 0 0 var(--uc-radius-buttons) !important;
+}

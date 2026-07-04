@@ -1,0 +1,134 @@
+/* ============================================================================
+   02-toolbar.css — Toolbar & Compact Mode
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Controls: nav bar height, button spacing, compact density, toolbar
+   overflow behavior. Uses tokens from 01-variables.css.
+   ============================================================================ */
+
+/* ============================================================================
+   COMPACT MODE — Height & Density
+   ============================================================================
+   Controlled by --uc-tab-height and --uc-toolbar-height in variables.css.
+   Default: 32px (compact). Set to 28px for very-compact, 36px for normal.
+   ============================================================================ */
+
+/* Apply compact height to the tabs toolbar */
+#TabsToolbar {
+  min-height: var(--uc-tab-height) !important;
+}
+
+/* Apply compact height to the navigation bar */
+#nav-bar {
+  min-height: var(--uc-toolbar-height) !important;
+}
+
+/* ============================================================================
+   TOOLBAR BUTTON SPACING
+   ============================================================================
+   Reduces padding on nav-bar buttons for a tighter, more modern feel.
+   ============================================================================ */
+
+/* Tighter button padding in the nav bar */
+#nav-bar toolbarbutton {
+  padding: var(--uc-space-2) !important;
+}
+
+/* Reduce inner padding on toolbar button icons */
+#nav-bar .toolbarbutton-icon {
+  padding: var(--uc-space-2) !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* ============================================================================
+   TOOLBAR BUTTON HOVER & ACTIVE STATES
+   ============================================================================
+   Smooth, subtle hover with rounded corners matching the design system.
+   ============================================================================ */
+
+/* Hover state for all toolbar buttons */
+#nav-bar toolbarbutton:not([disabled]):hover > .toolbarbutton-icon,
+#nav-bar toolbarbutton:not([disabled]):hover > .toolbarbutton-badge-stack {
+  background-color: var(--uc-hover-bg) !important;
+  border-radius: var(--uc-radius-buttons) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+/* Active (pressed) state */
+#nav-bar toolbarbutton:not([disabled]):hover:active > .toolbarbutton-icon,
+#nav-bar toolbarbutton:not([disabled]):hover:active > .toolbarbutton-badge-stack {
+  background-color: var(--uc-active-bg) !important;
+}
+
+/* ============================================================================
+   NAVIGATOR TOOLBOX — Unified Toolbar Container
+   ============================================================================
+   Removes the bottom border of the toolbox for a cleaner, unified look.
+   ============================================================================ */
+
+/* Remove default bottom border/separator between toolbar and content */
+#navigator-toolbox {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Add a subtle separator instead — much cleaner than the default thick line */
+#navigator-toolbox::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--uc-separator-color);
+}
+
+/* ============================================================================
+   TITLEBAR BUTTONS (Windows) — Spacing Fix
+   ============================================================================
+   Ensures window control buttons (min/max/close) align properly in
+   compact mode without overlapping tabs.
+   ============================================================================ */
+
+/* Ensure title bar buttons don't get clipped in compact mode */
+.titlebar-buttonbox-container {
+  align-items: center !important;
+}
+
+.titlebar-button {
+  padding-block: 0 !important;
+}
+
+/* ============================================================================
+   TOOLBAR OVERFLOW BUTTON
+   ============================================================================
+   Style the chevron that appears when toolbar items overflow.
+   ============================================================================ */
+
+#nav-bar-overflow-button > .toolbarbutton-icon {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+/* ============================================================================
+   EXTENSION BUTTON BADGES
+   ============================================================================
+   Better styling for the notification badges on extension icons.
+   ============================================================================ */
+
+.toolbarbutton-badge {
+  font-size: var(--uc-font-xs) !important;
+  font-weight: 600 !important;
+  min-width: 14px !important;
+  height: 14px !important;
+  line-height: 14px !important;
+  border-radius: 7px !important;
+  padding: 0 3px !important;
+  margin: -4px -2px 0 0 !important;
+  background-color: var(--uc-accent-color) !important;
+  color: var(--uc-accent-foreground) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Hide badges with no content (empty string or "0") */
+.toolbarbutton-badge:empty,
+.toolbarbutton-badge[value="0"] {
+  display: none !important;
+}

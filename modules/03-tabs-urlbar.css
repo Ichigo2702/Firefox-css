@@ -1,0 +1,306 @@
+/* ============================================================================
+   03-tabs-urlbar.css — Tabs & URL Bar
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Controls: rounded tabs, narrower tabs, hover/active states, pinned tabs,
+   multiselected tabs, drag preview, loading spinner, centered URL bar,
+   floating URL bar, autocomplete, search popup, one-off search buttons.
+   ============================================================================ */
+
+
+/* ============================================================================
+   TABS — Rounded Corners
+   ============================================================================ */
+
+/* Apply rounded corners to all tab backgrounds */
+.tab-background {
+  border-radius: var(--uc-radius-tabs) !important;
+  margin-block: var(--uc-space-4) !important;
+  transition:
+    background-color var(--uc-duration-micro) var(--uc-ease-standard),
+    box-shadow var(--uc-duration-micro) var(--uc-ease-standard),
+    opacity var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   TABS — Width
+   ============================================================================
+   Slightly narrower than default for more visible tabs.
+   ============================================================================ */
+
+.tabbrowser-tab {
+  min-width: var(--uc-tab-min-width) !important;
+  max-width: var(--uc-tab-max-width) !important;
+}
+
+/* Reduce tab content padding for tighter layout */
+.tab-content {
+  padding: 0 var(--uc-space-8) !important;
+}
+
+
+/* ============================================================================
+   TABS — Hover State
+   ============================================================================
+   Subtle background shift on hover. No jarring color changes.
+   ============================================================================ */
+
+.tabbrowser-tab:not([selected]):not([multiselected]):hover .tab-background {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+
+/* ============================================================================
+   TABS — Active (Selected) State
+   ============================================================================
+   Clean selected tab with subtle elevation.
+   ============================================================================ */
+
+.tabbrowser-tab[selected] .tab-background,
+.tabbrowser-tab[multiselected] .tab-background {
+  box-shadow: var(--uc-shadow-1) !important;
+}
+
+/* Remove Firefox's default tab outline/border for selected tabs */
+.tab-background[selected] {
+  outline: none !important;
+}
+
+
+/* ============================================================================
+   TABS — Multiselected State
+   ============================================================================ */
+
+.tabbrowser-tab[multiselected]:not([selected]) .tab-background {
+  background-color: var(--uc-hover-bg-strong) !important;
+  outline: 1px solid var(--uc-accent-color) !important;
+  outline-offset: -1px !important;
+}
+
+
+/* ============================================================================
+   TABS — Pinned Tabs
+   ============================================================================
+   Tighter pinned tabs with centered favicon.
+   ============================================================================ */
+
+.tabbrowser-tab[pinned] {
+  max-width: calc(var(--uc-tab-height) + var(--uc-space-8)) !important;
+}
+
+.tabbrowser-tab[pinned] .tab-content {
+  padding: 0 var(--uc-space-6) !important;
+}
+
+/* Hide text label on pinned tabs */
+.tabbrowser-tab[pinned] .tab-label-container {
+  display: none !important;
+}
+
+
+/* ============================================================================
+   TABS — Close Button
+   ============================================================================
+   Only show on hover, with smooth fade-in.
+   ============================================================================ */
+
+/* Hide close button by default */
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity var(--uc-duration-micro) var(--uc-ease-standard),
+    transform var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+/* Show on tab hover */
+.tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Close button hover: red accent */
+.tab-close-button:hover {
+  background-color: color-mix(in srgb, #e81123 15%, transparent) !important;
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+.tab-close-button:hover:active {
+  background-color: color-mix(in srgb, #e81123 25%, transparent) !important;
+}
+
+
+/* ============================================================================
+   TABS — Audio Indicator
+   ============================================================================
+   Better audio indicator styling.
+   ============================================================================ */
+
+.tab-icon-overlay[indicator-replaces-favicon] {
+  border-radius: 50% !important;
+  padding: 2px !important;
+}
+
+
+/* ============================================================================
+   TABS — Loading Spinner
+   ============================================================================
+   Smoother, thinner loading indicator.
+   ============================================================================ */
+
+.tab-throbber[busy]::before {
+  animation: uc-spinner 800ms linear infinite !important;
+}
+
+
+/* ============================================================================
+   TABS — Drag Preview
+   ============================================================================
+   Better visual for dragged tabs.
+   ============================================================================ */
+
+.tabbrowser-tab[tabdrop-samewindow] {
+  opacity: 0.6 !important;
+  transition: opacity var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   TABS — Tab Separator
+   ============================================================================
+   Thinner, subtler separators between tabs.
+   ============================================================================ */
+
+#TabsToolbar {
+  --toolbarseparator-color: var(--uc-separator-color) !important;
+}
+
+
+/* ============================================================================
+   TABS — Tab Preview Panel
+   ============================================================================
+   Rounded preview tooltip when hovering tabs.
+   ============================================================================ */
+
+#tab-preview-panel {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+  --panel-shadow: var(--uc-shadow-2) !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Centered
+   ============================================================================
+   Centers the URL bar with a max-width constraint.
+   ============================================================================ */
+
+#urlbar-container {
+  max-width: var(--uc-urlbar-max-width) !important;
+  margin-inline: auto !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Rounded & Floating
+   ============================================================================
+   Rounded corners, subtle elevation for a floating appearance.
+   ============================================================================ */
+
+/* Rounded URL bar background */
+#urlbar-background {
+  border-radius: var(--uc-radius-urlbar) !important;
+  border: 1px solid var(--uc-border-subtle) !important;
+  box-shadow: var(--uc-shadow-1) !important;
+  transition:
+    box-shadow var(--uc-duration-fast) var(--uc-ease-standard),
+    border-color var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+/* Focused URL bar — slight glow using accent color */
+#urlbar[focused] > #urlbar-background,
+#urlbar[open] > #urlbar-background {
+  border-color: color-mix(in srgb, var(--uc-accent-color) 40%, transparent) !important;
+  box-shadow: var(--uc-shadow-2),
+    0 0 0 1px color-mix(in srgb, var(--uc-accent-color) 20%, transparent) !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Input Transition
+   ============================================================================
+   Smooth expand effect when focusing the URL bar.
+   ============================================================================ */
+
+#urlbar {
+  transition:
+    width var(--uc-duration-fast) var(--uc-ease-decelerate),
+    margin var(--uc-duration-fast) var(--uc-ease-decelerate) !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Autocomplete Dropdown
+   ============================================================================
+   Rounded autocomplete popup with consistent styling.
+   ============================================================================ */
+
+/* Round the dropdown container */
+.urlbarView {
+  border-radius: 0 0 var(--uc-radius-urlbar) var(--uc-radius-urlbar) !important;
+}
+
+/* Better row hover styling */
+.urlbarView-row:hover {
+  background-color: var(--uc-hover-bg) !important;
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+.urlbarView-row[selected] {
+  background-color: var(--uc-hover-bg-strong) !important;
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+/* Autocomplete result icons */
+.urlbarView-favicon {
+  border-radius: 4px !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Search Popup & One-Off Buttons
+   ============================================================================
+   Better styling for search engine selector and one-off search buttons.
+   ============================================================================ */
+
+/* One-off search buttons row */
+.search-one-offs {
+  padding: var(--uc-space-4) !important;
+}
+
+/* Individual one-off search engine buttons */
+.searchbar-engine-one-off-item {
+  border-radius: var(--uc-radius-buttons) !important;
+  margin: var(--uc-space-2) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+.searchbar-engine-one-off-item:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+/* Search engine selector */
+#urlbar .search-panel-header {
+  padding: var(--uc-space-4) var(--uc-space-8) !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Bookmark Suggestion Icons
+   ============================================================================
+   Rounded icons in bookmark/history suggestions.
+   ============================================================================ */
+
+.urlbarView-type-icon {
+  border-radius: 4px !important;
+}

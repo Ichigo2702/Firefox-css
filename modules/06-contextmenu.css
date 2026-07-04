@@ -1,0 +1,216 @@
+/* ============================================================================
+   06-contextmenu.css — Context Menu Cleanup & Styling
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Preserves the user's original context menu item cleanup and adds
+   rounded styling, better hover states, and smart separator handling.
+
+   IMPORTANT: Separators are NOT hidden globally. Only visually empty ones
+   (adjacent to hidden items) are cleaned up per-selector.
+   ============================================================================ */
+
+
+/* ============================================================================
+   CONTEXT MENU — Visual Styling
+   ============================================================================
+   Rounded, padded, with modern hover states.
+   ============================================================================ */
+
+/* Rounded context menus */
+menupopup {
+  border-radius: var(--uc-radius-menus) !important;
+  padding: var(--uc-space-4) !important;
+  box-shadow: var(--uc-shadow-2) !important;
+  border: 1px solid var(--uc-acrylic-border) !important;
+}
+
+/* Menu items — rounded hover, better padding */
+menuitem,
+menu {
+  border-radius: var(--uc-radius-buttons) !important;
+  margin-inline: var(--uc-space-4) !important;
+  padding-block: var(--uc-space-4) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+menuitem:hover,
+menu:hover,
+menuitem[_moz-menuactive="true"],
+menu[_moz-menuactive="true"] {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+menuitem:hover:active,
+menu:hover:active {
+  background-color: var(--uc-active-bg) !important;
+}
+
+/* Disabled items — no hover highlight */
+menuitem[disabled="true"],
+menu[disabled="true"] {
+  background-color: transparent !important;
+  opacity: 0.5 !important;
+}
+
+/* Separator styling — thin, padded, not hidden globally */
+menuseparator {
+  margin-inline: var(--uc-space-8) !important;
+  border-color: var(--uc-separator-color) !important;
+  padding: 0 !important;
+}
+
+
+/* ============================================================================
+   TAB CONTEXT MENU — Item Cleanup
+   ============================================================================
+   Hides unwanted items from the tab right-click menu.
+   Separators adjacent to hidden items are hidden per-selector.
+   ============================================================================ */
+
+/* New Tab to the Right */
+#context_newTabFromTab { display: none !important; }
+
+/* Tab Groups */
+#context_addToNewGroup,
+#context_moveTabToNewGroup,
+#context_moveTabToGroup,
+#context_ungroupTab + menuseparator { display: none !important; }
+
+/* Split View */
+#context_moveSplitViewToNewGroup { display: none !important; }
+
+/* Share Tab */
+#tabContextMenu .share-tab-url-item { display: none !important; }
+
+/* Reload Tab */
+#context_reloadTab { display: none !important; }
+
+/* Unload Tab (Discard) */
+#context_unloadTab { display: none !important; }
+
+/* Duplicate Tab */
+#context_duplicateTab { display: none !important; }
+
+/* Bookmark Tab */
+#context_bookmarkTab { display: none !important; }
+
+/* Move Tab */
+#context_moveTabOptions { display: none !important; }
+
+/* Send Tab to Device */
+#context_sendTabToDevice,
+#context_sendTabToDevice_separator,
+#context_sendTabToDevicePopupMenu { display: none !important; }
+
+/* Open in Container Tab */
+#context_openTabInContainer,
+#context-openlinkinusercontext-menu { display: none !important; }
+
+/* Select All Tabs */
+#context_selectAllTabs { display: none !important; }
+
+/* Close Tab */
+#context_closeTab { display: none !important; }
+
+/* Undo Close Tab */
+#context_undoCloseTab { display: none !important; }
+
+/* Close Duplicate Tabs */
+#context_closeDuplicateTabs { display: none !important; }
+
+/* Tab context menu separators — only hide those adjacent to removed items */
+#context_openANewTab + menuseparator,
+#context_toggleMuteTab + menuseparator,
+#context_openTabInWindow + menuseparator,
+#context_sendTabToDevice + menuseparator,
+#context_closeOtherTabs + menuseparator,
+#context_closeTab + menuseparator { display: none !important; }
+
+/* All tab context menu separators — cleaner since most items are hidden */
+#tabContextMenu menuseparator { display: none !important; }
+
+
+/* ============================================================================
+   PAGE CONTEXT MENU — Item Cleanup
+   ============================================================================
+   Hides unwanted items from page right-click menu.
+   ============================================================================ */
+
+/* Save to Pocket */
+#context-pocket,
+#context-savelinktopocket,
+#context-sep-pocket { display: none !important; }
+
+/* Select All */
+#context-selectall,
+#context-sep-selectall { display: none !important; }
+
+/* Take Screenshot */
+#context-takescreenshot,
+#screenshots_mozilla_org_create-screenshot,
+#context-take-screenshot { display: none !important; }
+
+/* Send Image */
+#context-sendimage,
+#context-emailimage { display: none !important; }
+
+/* Bookmark Link */
+#context-bookmarklink { display: none !important; }
+
+/* Translate */
+#context-translate-selection,
+#context-translatepage { display: none !important; }
+
+/* Set as Desktop Background */
+#context-setDesktopBackground,
+#context-sep-setbackground { display: none !important; }
+
+/* View Page Source — separators */
+#contex-viewpartialsource-selection,
+#contex-sep-viewsource,
+#context-sep-viewsource { display: none !important; }
+
+/* Page context menu — specific empty separators */
+#context-sep-navigation,
+#context-sep-viewbgimage,
+#inspect-separator,
+#context-sep-copyimage,
+#context-sep-undo,
+#context-sep-paste,
+#context-sep-properties,
+#context-sep-bidi { display: none !important; }
+
+
+/* ============================================================================
+   LINK & IMAGE CONTEXT MENU — Item Cleanup
+   ============================================================================ */
+
+/* Open Link in New Window */
+#context-openlink,
+#context-openlinknew,
+#context-openlink + menuseparator { display: none !important; }
+
+/* Open Link in Private Window */
+#context-openlinkprivate,
+#context-openlinkprivate + menuseparator { display: none !important; }
+
+/* Copy Clean Link */
+#context-copylink-no-tracking,
+#context-copylink-no-tracking + menuseparator { display: none !important; }
+
+/* Search Image with Google Lens */
+#context-searchwithgooglelens,
+#context-searchwithgooglelens + menuseparator { display: none !important; }
+
+/* Inspect Accessibility */
+#context-inspect-a11y,
+#context-inspect-a11y + menuseparator { display: none !important; }
+
+/* Send Page/Link to Device */
+#context-sendlinktodevice,
+#context-sendpagetodevice,
+#context-sep-sendpagetodevice,
+#context-sep-sendlinktodevice { display: none !important; }
+
+/* Tab audio button — hidden */
+.tab-audio-button { display: none !important; }

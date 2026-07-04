@@ -1,0 +1,303 @@
+/* ============================================================================
+   05-menus.css — Panels, Popups, Downloads, Tooltips, Find Bar
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Controls: all panel/popup styling (app menu, extension popups, overflow,
+   identity, bookmark editing, permission), download panel, tooltips,
+   floating find bar. Unified acrylic/rounded appearance.
+   ============================================================================ */
+
+
+/* ============================================================================
+   PANELS — Global Panel Styling
+   ============================================================================
+   Applies to ALL arrow panels (app menu, extension popups, etc).
+   ============================================================================ */
+
+/* Rounded panels with subtle shadow */
+panel[type="arrow"]::part(content) {
+  border-radius: var(--uc-radius-panels) !important;
+  box-shadow: var(--uc-shadow-2) !important;
+  border: 1px solid var(--uc-acrylic-border) !important;
+}
+
+/* Panel open animation — scale in */
+panel[type="arrow"][animate] {
+  animation: uc-scale-in var(--uc-duration-fast) var(--uc-ease-decelerate) !important;
+}
+
+/* Better panel background for acrylic effect */
+panel[type="arrow"]::part(content) {
+  background-color: var(--uc-acrylic-bg) !important;
+  backdrop-filter: blur(var(--uc-blur-standard)) !important;
+}
+
+
+/* ============================================================================
+   APP MENU — Main Hamburger Menu
+   ============================================================================ */
+
+/* Rounded app menu panel */
+#appMenu-popup {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+/* App menu items — rounded hover */
+#appMenu-popup .subviewbutton {
+  border-radius: var(--uc-radius-buttons) !important;
+  margin-inline: var(--uc-space-4) !important;
+  padding-block: var(--uc-space-6) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#appMenu-popup .subviewbutton:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+#appMenu-popup .subviewbutton:hover:active {
+  background-color: var(--uc-active-bg) !important;
+}
+
+/* App menu separators */
+#appMenu-popup toolbarseparator {
+  margin-inline: var(--uc-space-8) !important;
+  border-color: var(--uc-separator-color) !important;
+}
+
+
+/* ============================================================================
+   EXTENSION POPUP
+   ============================================================================
+   Better styling for extension popup panels.
+   ============================================================================ */
+
+#customizationui-widget-panel {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+.panel-no-padding .panel-arrowcontent {
+  border-radius: var(--uc-radius-panels) !important;
+  overflow: hidden !important;
+}
+
+
+/* ============================================================================
+   OVERFLOW MENU
+   ============================================================================
+   Better styling for the toolbar overflow chevron menu.
+   ============================================================================ */
+
+#widget-overflow {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+#widget-overflow .toolbarbutton-1 {
+  border-radius: var(--uc-radius-buttons) !important;
+  margin: var(--uc-space-2) var(--uc-space-4) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   IDENTITY POPUP (Site Info / Lock Icon)
+   ============================================================================
+   Better site information panel styling.
+   ============================================================================ */
+
+#identity-popup {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+/* Identity popup content sections */
+#identity-popup .identity-popup-security-connection {
+  padding: var(--uc-space-8) !important;
+}
+
+#identity-popup menulist {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+
+/* ============================================================================
+   BOOKMARK EDITING POPUP (Star Button)
+   ============================================================================
+   Better bookmark editing dialog styling.
+   ============================================================================ */
+
+#editBookmarkPanel {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+#editBookmarkPanel .expander-up,
+#editBookmarkPanel .expander-down {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+/* Bookmark star animation when bookmarking */
+#star-button[starred] {
+  animation: uc-star-fill var(--uc-duration-normal) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   PERMISSION POPUP
+   ============================================================================
+   Better permission request dialog.
+   ============================================================================ */
+
+#notification-popup {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+.popup-notification-body {
+  padding: var(--uc-space-8) !important;
+}
+
+.popup-notification-button-container button {
+  border-radius: var(--uc-radius-buttons) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   PAGE INFO DIALOG
+   ============================================================================ */
+
+.panel-footer button {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+
+/* ============================================================================
+   DOWNLOADS PANEL
+   ============================================================================
+   Rounded download popup with better progress bar and hover effects.
+   ============================================================================ */
+
+#downloadsPanel {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+/* Download list items */
+#downloadsListBox richlistitem {
+  border-radius: var(--uc-radius-buttons) !important;
+  margin: var(--uc-space-2) var(--uc-space-4) !important;
+  padding: var(--uc-space-6) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#downloadsListBox richlistitem:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+/* Download progress bar — rounded */
+.downloadProgress {
+  border-radius: 4px !important;
+  height: 4px !important;
+  margin-top: var(--uc-space-4) !important;
+}
+
+.downloadProgress > .progress-bar {
+  border-radius: 4px !important;
+  background-color: var(--uc-accent-color) !important;
+  transition: width var(--uc-duration-normal) var(--uc-ease-standard) !important;
+}
+
+/* Download buttons — rounded */
+.downloadButton {
+  border-radius: var(--uc-radius-buttons) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+.downloadButton:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+/* Downloads indicator (toolbar button) animation */
+#downloads-indicator[attention] .toolbarbutton-icon {
+  animation: uc-pulse var(--uc-duration-normal) var(--uc-ease-standard) 2 !important;
+}
+
+
+/* ============================================================================
+   TOOLTIPS
+   ============================================================================
+   Rounded, modern tooltips with shadow and better typography.
+   ============================================================================ */
+
+tooltip {
+  -moz-default-appearance: none !important;
+  appearance: none !important;
+  background-color: var(--arrowpanel-background, Menu) !important;
+  color: var(--arrowpanel-color, MenuText) !important;
+  border: 1px solid var(--uc-acrylic-border) !important;
+  border-radius: var(--uc-radius-tooltips) !important;
+  padding: var(--uc-space-6) var(--uc-space-12) !important;
+  box-shadow: var(--uc-shadow-2) !important;
+  font-size: var(--uc-font-sm) !important;
+  line-height: 1.4 !important;
+  max-width: 360px !important;
+  animation: uc-fade-in var(--uc-duration-micro) var(--uc-ease-decelerate) !important;
+}
+
+/* Remove default tooltip appearance */
+tooltip > description {
+  margin: 0 !important;
+}
+
+
+/* ============================================================================
+   FIND BAR — Floating
+   ============================================================================
+   Detaches the find bar from the bottom, rounds it, adds shadow.
+   ============================================================================ */
+
+findbar,
+.findbar-container {
+  border-radius: var(--uc-radius-panels) !important;
+  box-shadow: var(--uc-shadow-2) !important;
+  border: 1px solid var(--uc-acrylic-border) !important;
+  margin: var(--uc-space-8) var(--uc-space-16) !important;
+  padding: var(--uc-space-4) var(--uc-space-8) !important;
+  animation: uc-slide-up var(--uc-duration-fast) var(--uc-ease-decelerate) !important;
+}
+
+/* Find bar input */
+findbar .findbar-textbox,
+.findbar-container .findbar-textbox {
+  border-radius: var(--uc-radius-buttons) !important;
+  padding: var(--uc-space-4) var(--uc-space-8) !important;
+  font-size: var(--uc-font-md) !important;
+}
+
+/* Find bar buttons */
+findbar toolbarbutton,
+.findbar-container toolbarbutton {
+  border-radius: var(--uc-radius-buttons) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+findbar toolbarbutton:hover,
+.findbar-container toolbarbutton:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+/* Find bar close button */
+.findbar-closebutton {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+.findbar-closebutton:hover {
+  background-color: color-mix(in srgb, #e81123 15%, transparent) !important;
+}
+
+
+/* ============================================================================
+   SCREENSHOT POPUP
+   ============================================================================
+   Better screenshot dialog styling.
+   ============================================================================ */
+
+#screenshotsPagePanel {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}

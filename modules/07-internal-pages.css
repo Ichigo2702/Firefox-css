@@ -1,0 +1,260 @@
+/* ============================================================================
+   07-internal-pages.css — about: Pages & PDF Viewer
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Styles for: about:config, about:preferences, about:support,
+   about:downloads, and the PDF viewer.
+   Loaded via userContent.css.
+   ============================================================================ */
+
+
+/* ============================================================================
+   SHARED — All Internal Pages
+   ============================================================================
+   Common improvements applied to all about: pages.
+   ============================================================================ */
+
+/* Better buttons across all internal pages */
+@-moz-document url-prefix("about:") {
+
+  /* Rounded buttons */
+  button,
+  .button,
+  input[type="button"],
+  input[type="submit"],
+  select {
+    border-radius: 6px !important;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Better table styling */
+  table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  th, td {
+    padding: 8px 12px !important;
+  }
+
+  /* Better spacing for description lists */
+  dt {
+    font-weight: 600 !important;
+  }
+
+  dd {
+    margin-inline-start: 16px !important;
+    margin-bottom: 8px !important;
+  }
+}
+
+
+/* ============================================================================
+   about:config — Configuration Editor
+   ============================================================================ */
+
+@-moz-document url("about:config") {
+
+  /* Search input — rounded */
+  #about-config-search {
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    border: 1px solid color-mix(in srgb, currentColor 15%, transparent) !important;
+    transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  #about-config-search:focus {
+    border-color: AccentColor !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px color-mix(in srgb, AccentColor 20%, transparent) !important;
+  }
+
+  /* Table rows — better hover */
+  table tr {
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  table tr:hover {
+    background-color: color-mix(in srgb, currentColor 5%, transparent) !important;
+  }
+
+  /* Modified prefs — subtle highlight */
+  table tr.has-user-value td:first-child {
+    font-weight: 600 !important;
+  }
+
+  /* Buttons in table — compact, rounded */
+  table button {
+    border-radius: 4px !important;
+    padding: 4px 8px !important;
+    min-height: 28px !important;
+  }
+
+  /* Config table cells — better spacing */
+  table td {
+    padding: 6px 8px !important;
+  }
+}
+
+
+/* ============================================================================
+   about:preferences — Settings
+   ============================================================================ */
+
+@-moz-document url-prefix("about:preferences") {
+
+  /* Category sidebar items — rounded */
+  .category {
+    border-radius: 6px !important;
+    margin-inline: 4px !important;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .category:hover {
+    background-color: color-mix(in srgb, currentColor 8%, transparent) !important;
+  }
+
+  .category[selected] {
+    border-radius: 6px !important;
+  }
+
+  /* Text inputs — rounded */
+  input[type="text"],
+  input[type="number"],
+  input[type="url"],
+  input[type="email"],
+  textarea {
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+  }
+
+  /* Group boxes — rounded */
+  groupbox {
+    border-radius: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Checkboxes — spacing */
+  checkbox {
+    margin-block: 4px !important;
+  }
+
+  /* Search in preferences */
+  #searchInput {
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+  }
+
+  #searchInput:focus {
+    border-color: AccentColor !important;
+    box-shadow: 0 0 0 2px color-mix(in srgb, AccentColor 20%, transparent) !important;
+  }
+}
+
+
+/* ============================================================================
+   about:support — Troubleshooting Information
+   ============================================================================ */
+
+@-moz-document url("about:support") {
+
+  /* Tables — better borders and spacing */
+  table {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+  }
+
+  th {
+    font-weight: 600 !important;
+    text-align: start !important;
+  }
+
+  tr:nth-child(even) {
+    background-color: color-mix(in srgb, currentColor 3%, transparent) !important;
+  }
+
+  /* Copy buttons — rounded */
+  .copy-button,
+  #copy-raw-data-to-clipboard,
+  #copy-to-clipboard {
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+  }
+}
+
+
+/* ============================================================================
+   about:downloads — Downloads Page
+   ============================================================================ */
+
+@-moz-document url("about:downloads") {
+
+  /* Download items — rounded, better spacing */
+  richlistitem {
+    border-radius: 8px !important;
+    margin: 4px 8px !important;
+    padding: 8px !important;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  richlistitem:hover {
+    background-color: color-mix(in srgb, currentColor 5%, transparent) !important;
+  }
+
+  /* Progress bars — rounded */
+  progress {
+    border-radius: 4px !important;
+    height: 4px !important;
+  }
+
+  progress::-moz-progress-bar {
+    border-radius: 4px !important;
+    background-color: AccentColor !important;
+  }
+}
+
+
+/* ============================================================================
+   PDF VIEWER
+   ============================================================================ */
+
+@-moz-document url-prefix("moz-extension://"), url("about:blank") {
+  /* PDF viewer toolbar improvements are handled by Firefox's own
+     pdf.js styling. We only add minor tweaks here. */
+}
+
+@-moz-document regexp(".*\\.pdf$") {
+  /* Future: PDF viewer custom styling if needed */
+}
+
+/* PDF viewer toolbar — applied via internal resource URL */
+@-moz-document url-prefix("resource://pdf.js/") {
+
+  /* Toolbar buttons — rounded */
+  .toolbarButton {
+    border-radius: 6px !important;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .toolbarButton:hover {
+    background-color: color-mix(in srgb, currentColor 10%, transparent) !important;
+  }
+
+  /* Page number input — rounded */
+  #pageNumber {
+    border-radius: 4px !important;
+  }
+
+  /* Sidebar tabs — rounded */
+  .toolbarButton.toggled {
+    border-radius: 6px !important;
+  }
+
+  /* Search input in PDF viewer */
+  #findInput {
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+  }
+}

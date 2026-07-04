@@ -1,0 +1,28 @@
+/* ============================================================================
+   userChrome.css — Firefox 152 — Polished UI Redesign
+   ============================================================================
+   ENTRY POINT — This file only contains imports.
+   To customize, edit modules/01-variables.css.
+   To disable a module, comment out its @import line.
+   ============================================================================ */
+
+/* Design tokens, animations, acrylic base */
+@import url("modules/01-variables.css");
+
+/* Toolbar, compact mode, button spacing */
+@import url("modules/02-toolbar.css");
+
+/* Tabs & URL bar */
+@import url("modules/03-tabs-urlbar.css");
+
+/* Bookmarks toolbar & sidebar */
+@import url("modules/04-bookmarks-sidebar.css");
+
+/* Panels, popups, downloads, tooltips, find bar */
+@import url("modules/05-menus.css");
+
+/* Context menu cleanup & styling */
+@import url("modules/06-contextmenu.css");
+
+/* Fullscreen, scrollbars, PiP, Ctrl+Tab, extras */
+@import url("modules/09-extras.css");

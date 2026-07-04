@@ -1,0 +1,12 @@
+/* ============================================================================
+   userContent.css — Firefox 152 — Polished UI Redesign
+   ============================================================================
+   ENTRY POINT — Content page styles (about: pages, websites).
+   To disable a module, comment out its @import line.
+   ============================================================================ */
+
+/* about:config, about:preferences, about:support, about:downloads, PDF viewer */
+@import url("modules/07-internal-pages.css");
+
+/* ChatGPT, GitHub, Reddit, Gmail */
+@import url("modules/08-websites.css");

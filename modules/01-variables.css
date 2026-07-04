@@ -1,0 +1,235 @@
+/* ============================================================================
+   01-variables.css — Design Tokens & Animations
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   This file defines EVERY configurable value used across the project.
+   To customize the look, change values here — never in other modules.
+   ============================================================================ */
+
+/* ============================================================================
+   CONFIGURABLE USER PREFERENCES
+   ============================================================================
+   Change these to personalize your Firefox.
+   ============================================================================ */
+
+:root {
+
+  /* -- Density ---------------------------------------------------------------
+     Controls overall compactness of the UI.
+     Options:  36px (normal) | 32px (compact) | 28px (very-compact)
+     Adjust --uc-tab-height and --uc-toolbar-height together.
+     ----------------------------------------------------------------------- */
+  --uc-tab-height: 32px;
+  --uc-toolbar-height: 32px;
+
+  /* -- Accent Color ----------------------------------------------------------
+     Set to "AccentColor" to follow Windows system accent.
+     Or use any CSS color: #0078d4, rgb(0, 120, 212), etc.
+     ----------------------------------------------------------------------- */
+  --uc-accent-color: AccentColor;
+  --uc-accent-color-hover: color-mix(in srgb, var(--uc-accent-color) 85%, white);
+  --uc-accent-color-active: color-mix(in srgb, var(--uc-accent-color) 80%, black);
+  --uc-accent-foreground: AccentColorText;
+
+  /* -- Blur Strength ---------------------------------------------------------
+     Windows 11 style: 8px–12px. Higher = more blur, more GPU cost.
+     ----------------------------------------------------------------------- */
+  --uc-blur-subtle: 8px;
+  --uc-blur-standard: 12px;
+
+  /* -- Animation Speed -------------------------------------------------------
+     Multiplier: 1 = normal, 0 = instant, 0.5 = fast, 2 = slow.
+     Applied to all transition/animation durations.
+     ----------------------------------------------------------------------- */
+  --uc-animation-multiplier: 1;
+
+  /* -- Shadow Strength -------------------------------------------------------
+     Opacity base for all elevation shadows.
+     0.12 = subtle (default), 0.2 = stronger, 0 = flat.
+     ----------------------------------------------------------------------- */
+  --uc-shadow-opacity: 0.12;
+
+  /* -- Corner Radius ---------------------------------------------------------
+     Per-component radius. Adjust individually for taste.
+     ----------------------------------------------------------------------- */
+  --uc-radius-tabs: 8px;
+  --uc-radius-buttons: 6px;
+  --uc-radius-urlbar: 12px;
+  --uc-radius-menus: 10px;
+  --uc-radius-tooltips: 8px;
+  --uc-radius-panels: 12px;
+
+  /* -- URL Bar ---------------------------------------------------------------
+     Max width of the centered URL bar. Set to "none" for full width.
+     ----------------------------------------------------------------------- */
+  --uc-urlbar-max-width: 900px;
+
+  /* -- Tab Width -------------------------------------------------------------
+     Min/max width for tabs. Narrower = more tabs visible.
+     ----------------------------------------------------------------------- */
+  --uc-tab-min-width: 60px;
+  --uc-tab-max-width: 220px;
+
+  /* -- Scrollbar Width -------------------------------------------------------
+     "thin" = Firefox's thin scrollbar mode.
+     Or use a pixel value for custom width.
+     ----------------------------------------------------------------------- */
+  --uc-scrollbar-width: thin;
+
+  /* -- Scrollbar Color -------------------------------------------------------
+     thumb-color  track-color
+     ----------------------------------------------------------------------- */
+  --uc-scrollbar-thumb: color-mix(in srgb, currentColor 35%, transparent);
+  --uc-scrollbar-track: transparent;
+}
+
+
+/* ============================================================================
+   DERIVED DESIGN TOKENS
+   ============================================================================
+   Computed from user preferences above. Do not edit unless you know
+   what you're doing.
+   ============================================================================ */
+
+:root {
+
+  /* -- Spacing Scale -------------------------------------------------------- */
+  --uc-space-2: 2px;
+  --uc-space-4: 4px;
+  --uc-space-6: 6px;
+  --uc-space-8: 8px;
+  --uc-space-12: 12px;
+  --uc-space-16: 16px;
+  --uc-space-24: 24px;
+
+  /* -- Animation Durations (multiplied) ------------------------------------- */
+  --uc-duration-micro: calc(150ms * var(--uc-animation-multiplier));
+  --uc-duration-fast: calc(200ms * var(--uc-animation-multiplier));
+  --uc-duration-normal: calc(300ms * var(--uc-animation-multiplier));
+
+  /* -- Easing Functions ----------------------------------------------------- */
+  --uc-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --uc-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --uc-ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* -- Elevation Shadows ---------------------------------------------------- */
+  --uc-shadow-1: 0 2px 8px rgba(0, 0, 0, var(--uc-shadow-opacity));
+  --uc-shadow-2: 0 4px 16px rgba(0, 0, 0, calc(var(--uc-shadow-opacity) + 0.04));
+  --uc-shadow-3: 0 8px 32px rgba(0, 0, 0, calc(var(--uc-shadow-opacity) + 0.08));
+
+  /* -- Typography Scale ----------------------------------------------------- */
+  --uc-font-xs: 11px;
+  --uc-font-sm: 12px;
+  --uc-font-md: 13px;
+  --uc-font-base: 14px;
+  --uc-font-lg: 16px;
+
+  /* -- Acrylic / Transparency ----------------------------------------------- */
+  --uc-acrylic-bg: color-mix(in srgb, var(--arrowpanel-background, Menu) 78%, transparent);
+  --uc-acrylic-bg-hover: color-mix(in srgb, var(--arrowpanel-background, Menu) 88%, transparent);
+  --uc-acrylic-border: color-mix(in srgb, currentColor 8%, transparent);
+
+  /* -- Common Colors (derived from Firefox native vars) --------------------- */
+  --uc-hover-bg: color-mix(in srgb, currentColor 8%, transparent);
+  --uc-hover-bg-strong: color-mix(in srgb, currentColor 12%, transparent);
+  --uc-active-bg: color-mix(in srgb, currentColor 16%, transparent);
+  --uc-separator-color: color-mix(in srgb, currentColor 12%, transparent);
+  --uc-border-subtle: color-mix(in srgb, currentColor 6%, transparent);
+
+  /* -- Apply tab/toolbar heights to Firefox's native variables --------------- */
+  --tab-min-height: var(--uc-tab-height) !important;
+}
+
+
+/* ============================================================================
+   KEYFRAME ANIMATIONS
+   ============================================================================
+   Reusable @keyframes used across modules. Referenced by name.
+   ============================================================================ */
+
+/* Fade in from transparent */
+@keyframes uc-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade out to transparent */
+@keyframes uc-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Slide up from below (for popups, findbar) */
+@keyframes uc-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide down (for bookmarks toolbar reveal) */
+@keyframes uc-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in from slightly smaller (for panels, popups) */
+@keyframes uc-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Improved loading spinner */
+@keyframes uc-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Subtle pulse for attention (bookmark star, badges) */
+@keyframes uc-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* Bookmark star fill animation */
+@keyframes uc-star-fill {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.3); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+
+/* ============================================================================
+   DARK MODE ADJUSTMENTS
+   ============================================================================
+   Slightly different shadow/acrylic values for dark backgrounds.
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --uc-shadow-opacity: 0.24;
+    --uc-acrylic-bg: color-mix(in srgb, var(--arrowpanel-background, Menu) 72%, transparent);
+    --uc-acrylic-bg-hover: color-mix(in srgb, var(--arrowpanel-background, Menu) 82%, transparent);
+    --uc-acrylic-border: color-mix(in srgb, currentColor 12%, transparent);
+    --uc-hover-bg: color-mix(in srgb, currentColor 10%, transparent);
+    --uc-hover-bg-strong: color-mix(in srgb, currentColor 15%, transparent);
+    --uc-active-bg: color-mix(in srgb, currentColor 20%, transparent);
+  }
+}

@@ -1,0 +1,189 @@
+/* ============================================================================
+   09-extras.css — Fullscreen, Scrollbars, PiP, Ctrl+Tab & More
+   Firefox 152 — Polished UI Redesign
+   ============================================================================
+   Controls: fullscreen transitions, scrollbar styling, Picture-in-Picture
+   button, Ctrl+Tab switcher, bookmark star animation, extension badges,
+   permission popup, tab preview panel.
+   ============================================================================ */
+
+
+/* ============================================================================
+   FULLSCREEN — Smooth Transitions
+   ============================================================================
+   Smoother enter/exit for fullscreen mode. Toolbar hides/shows gracefully.
+   ============================================================================ */
+
+/* Smooth toolbar auto-hide in fullscreen */
+:root[sizemode="fullscreen"] #navigator-toolbox {
+  transition:
+    margin-top var(--uc-duration-normal) var(--uc-ease-standard),
+    opacity var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+/* Fullscreen toolbar show trigger — larger hover target */
+#fullscr-toggler {
+  height: 4px !important;
+}
+
+/* When hovering the trigger area in fullscreen, show toolbar smoothly */
+:root[sizemode="fullscreen"]:not([inDOMFullscreen="true"]) #navigator-toolbox:hover {
+  margin-top: 0 !important;
+  opacity: 1 !important;
+}
+
+/* Content area transition in fullscreen */
+:root[sizemode="fullscreen"] #browser {
+  transition: padding-top var(--uc-duration-normal) var(--uc-ease-standard) !important;
+}
+
+
+/* ============================================================================
+   SCROLLBARS — Thin, Rounded, Windows Style
+   ============================================================================
+   NOT auto-hide. Just thin, rounded, and matching Windows 11 style.
+   Applied globally to all scrollable content.
+   ============================================================================ */
+
+/* Global thin scrollbar */
+* {
+  scrollbar-width: var(--uc-scrollbar-width) !important;
+  scrollbar-color: var(--uc-scrollbar-thumb) var(--uc-scrollbar-track) !important;
+}
+
+
+/* ============================================================================
+   PICTURE-IN-PICTURE — Better Button
+   ============================================================================
+   Rounded PiP toggle button with better positioning.
+   ============================================================================ */
+
+.pip-wrapper .pip-small {
+  border-radius: var(--uc-radius-buttons) !important;
+  opacity: 0;
+  transition: opacity var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+/* Show PiP button on video hover */
+.pip-wrapper:hover .pip-small {
+  opacity: 1;
+}
+
+
+/* ============================================================================
+   CTRL+TAB SWITCHER — Better Styling
+   ============================================================================
+   Rounded panel for the Ctrl+Tab recent tabs switcher.
+   ============================================================================ */
+
+#tabview-panel,
+#ctrlTab-panel {
+  border-radius: var(--uc-radius-panels) !important;
+  box-shadow: var(--uc-shadow-3) !important;
+  border: 1px solid var(--uc-acrylic-border) !important;
+}
+
+/* Tab thumbnails in switcher — rounded */
+.ctrlTab-preview {
+  border-radius: var(--uc-radius-tabs) !important;
+  overflow: hidden !important;
+}
+
+/* Selected tab in switcher */
+.ctrlTab-preview[selected] {
+  box-shadow: 0 0 0 2px var(--uc-accent-color) !important;
+  border-radius: var(--uc-radius-tabs) !important;
+}
+
+
+/* ============================================================================
+   BOOKMARK STAR — Fill Animation
+   ============================================================================
+   Animated star when bookmarking a page.
+   Already defined keyframe in variables.css, applied in menus.css.
+   This ensures the star icon itself has proper styling.
+   ============================================================================ */
+
+/* Bookmarked star icon — accent color */
+#star-button[starred] image {
+  fill: var(--uc-accent-color) !important;
+}
+
+
+/* ============================================================================
+   TAB PREVIEW PANEL — Better Styling
+   ============================================================================
+   Rounded tab preview tooltip with shadow.
+   ============================================================================ */
+
+#tab-preview-panel {
+  border-radius: var(--uc-radius-panels) !important;
+  box-shadow: var(--uc-shadow-2) !important;
+  border: 1px solid var(--uc-acrylic-border) !important;
+  overflow: hidden !important;
+}
+
+/* Preview image — rounded */
+#tab-preview-panel .tab-preview-thumbnail {
+  border-radius: var(--uc-radius-tabs) !important;
+}
+
+/* Preview title */
+#tab-preview-panel .tab-preview-title {
+  padding: var(--uc-space-6) var(--uc-space-8) !important;
+  font-size: var(--uc-font-sm) !important;
+}
+
+
+/* ============================================================================
+   POPUP OPENING ANIMATION — Global
+   ============================================================================
+   Subtle scale+fade for all popups and panels.
+   (Complements the panel animation in 05-menus.css)
+   ============================================================================ */
+
+/* Menupopup open animation */
+menupopup {
+  animation: uc-scale-in var(--uc-duration-fast) var(--uc-ease-decelerate) !important;
+}
+
+
+/* ============================================================================
+   LOADING INDICATOR — Better Page Loading Bar
+   ============================================================================
+   Smoother, accent-colored loading progress bar at the top.
+   ============================================================================ */
+
+
+/* ============================================================================
+   NOTIFICATION BAR (Info Bar)
+   ============================================================================
+   Better styling for the notification bar that appears below the URL bar.
+   ============================================================================ */
+
+.infobar {
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--uc-separator-color) !important;
+  padding: var(--uc-space-4) var(--uc-space-8) !important;
+}
+
+.infobar button {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+
+/* ============================================================================
+   PRIVATE BROWSING INDICATOR
+   ============================================================================
+   Subtle private browsing badge.
+   ============================================================================ */
+
+:root[privatebrowsingmode="temporary"] #private-browsing-indicator-with-label {
+  font-size: var(--uc-font-xs) !important;
+  opacity: 0.7 !important;
+  transition: opacity var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #private-browsing-indicator-with-label:hover {
+  opacity: 1;
+}
