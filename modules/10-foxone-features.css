@@ -79,24 +79,3 @@
   opacity: 1 !important;
 }
 
-/* ============================================================================
-   FEATURE 3: FLOATING FINDBAR
-   ============================================================================ */
-
-findbar {
-  position: absolute !important;
-  top: 8px !important;
-  right: 18px !important;
-  border: 1px solid var(--chrome-content-separator-color) !important;
-  border-radius: var(--toolbarbutton-border-radius) !important;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2) !important;
-  opacity: 1 !important;
-  transform-origin: top right !important;
-  transform: scaleY(1) translateY(0px) !important;
-  transition: opacity 100ms ease-out, transform 100ms ease-out, visibility 0s step-end !important;
-}
-findbar[hidden] {
-  opacity: 0 !important;
-  transform: scaleY(0.96) translateY(-4px) !important;
-  transition-delay: 0s, 0s, 100ms !important;
-}
