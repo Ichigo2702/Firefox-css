@@ -73,20 +73,49 @@ chrome/
 - ✅ Reddit (post cards, inputs, threads)
 - ✅ Gmail (compose button, email rows, search)
 
-## Installation
+## Installation & Setup
 
-1. **Enable custom CSS:**
-   - Type `about:config` in Firefox address bar
-   - Accept the risk
-   - Search: `toolkit.legacyUserProfileCustomizations.stylesheets`
-   - Set to `true`
+Follow these steps to set up the theme on your system:
 
-2. **Enable Mica/Acrylic (optional, Windows 11):**
-   - See `about-config-guide.md` for recommended settings
+### Step 1: Locate your Firefox Profile Folder
+1. Open Firefox.
+2. In the address bar, type `about:support` and press **Enter**.
+3. Under the **Application Basics** section, look for **Profile Folder** and click the **Open Folder** button. This will open your file explorer at your active profile directory (e.g., `C:\Users\<YourUsername>\AppData\Roaming\Mozilla\Firefox\Profiles\<profile-id>.default-release`).
 
-3. **Place files:**
-   - Files are already in your profile's `chrome/` folder
-   - Restart Firefox completely (close all windows)
+### Step 2: Place the Files
+1. Inside your profile directory, look for a folder named **`chrome`**. (If it does not exist, create a new folder named `chrome` in lowercase).
+2. Copy or clone this repository's contents (specifically `userChrome.css`, `userContent.css`, and the `modules/` folder) directly into that `chrome/` folder.
+3. Your final file layout should look like this:
+   ```text
+   <profile-folder>/chrome/
+   ├── userChrome.css
+   ├── userContent.css
+   └── modules/
+       ├── 01-variables.css
+       ├── ...
+   ```
+
+### Step 3: Enable Custom Stylesheets in Firefox
+1. In Firefox, type **`about:config`** into the address bar and press **Enter**.
+2. Click **Accept the Risk and Continue**.
+3. Search for:
+   ```text
+   toolkit.legacyUserProfileCustomizations.stylesheets
+   ```
+4. Double-click it (or click the toggle button) to change its value from `false` to **`true`**.
+
+### Step 4: Enable Mica/Acrylic Blur (Windows 11 only, Optional)
+To enable the premium Windows 11 Mica translucent window effect:
+1. In **`about:config`**, search for:
+   ```text
+   widget.windows.mica
+   ```
+2. Double-click it to change its value to **`true`**.
+3. Go to Firefox menu ☰ → **Add-ons and Themes** → **Themes** and ensure you are using the **System theme — auto** or the default **Dark** theme. (For more details, check `docs/about-config-guide.md`).
+
+### Step 5: Restart Firefox
+1. Close all open Firefox windows.
+2. Relaunch Firefox to load the custom theme.
 
 ## How to Disable Individual Modules
 
