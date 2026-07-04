@@ -1,0 +1,226 @@
+/* ============================================================================
+   10-foxone-features.css
+   Features extracted from FoxOne:
+   1. Dynamic URL Bar Hover-Reveal Icons
+   2. Floating Find Bar (LittleFox)
+   3. Dynamic Tabs & Extension Hover-Reveal (Adapted for 2-line layout)
+   ============================================================================ */
+
+:root {
+  /* Dynamic Tabs Variables */
+  --uc-active-tab-width: clamp(100px, 30vw, 190px);
+  --uc-inactive-tab-width: clamp(100px, 20vw, 120px);
+  --uc-tab-min-width: 76px;
+
+  /* Findbar Variables */
+  --findbar-top: 8px;
+  --findbar-right: 8px;
+  --findbar-width: 360px;
+  --show-margin: round(up, calc((var(--show-highlight-all) + var(--show-match-case) + var(--show-match-diacritics) + var(--show-whole-words)) / 4));
+  --options-width: calc(34px*var(--show-highlight-all) + 34px*var(--show-match-case) + 34px*var(--show-match-diacritics) + 34px*var(--show-whole-words) + 4px*var(--show-margin));
+  --findbar-min-width: calc(500px - 2 * var(--findbar-right));
+  --findbar-min-width-expanded: calc(var(--findbar-min-width) + var(--options-width));
+  --findbar-max-width: calc(100vw - 2 * var(--findbar-right));
+  --findbar-width-use: clamp(var(--findbar-min-width-expanded), var(--findbar-width), var(--findbar-max-width));
+  --textbox-min-width: calc(var(--findbar-min-width) - 116px);
+  --textbox-width: calc(var(--findbar-width-use) - 116px - var(--options-width));
+}
+
+/* ============================================================================
+   FEATURE 1: DYNAMIC URL BAR HOVER-REVEAL ICONS
+   ============================================================================ */
+#reader-mode-button,
+#taskbar-tabs-button,
+#translations-button,
+.urlbar-addon-page-action {
+  max-width: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transition: max-width 0.2s ease, opacity 0.2s ease,
+              padding 0.2s ease, margin 0.2s ease !important;
+}
+
+#urlbar:hover #reader-mode-button,
+#urlbar:hover #taskbar-tabs-button,
+#urlbar:hover #translations-button,
+#urlbar:hover .urlbar-addon-page-action,
+#urlbar[focused="true"] #reader-mode-button,
+#urlbar[focused="true"] #taskbar-tabs-button,
+#urlbar[focused="true"] #translations-button,
+#urlbar[focused="true"] .urlbar-addon-page-action {
+  max-width: 30px !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  padding-block: 0 !important;
+  padding-inline: 6px !important;
+  margin: 0 !important;
+}
+
+/* ============================================================================
+   FEATURE 2: DYNAMIC TABS & EXTENSION HOVER REVEAL
+   ============================================================================ */
+
+/* Adaptive tab widths */
+.tabbrowser-tab[selected][fadein]:not([pinned]) {
+  max-width: var(--uc-active-tab-width) !important;
+}
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
+  max-width: var(--uc-inactive-tab-width) !important;
+}
+.tabbrowser-tab[fadein]:not([pinned]) {
+  min-width: var(--uc-tab-min-width) !important;
+}
+
+/* Hide extension icons unless hovering over the navigation bar right-side */
+#nav-bar-customization-target > .webextension-browser-action {
+  max-width: 0px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  transition: max-width 0.25s ease-out, padding 0.2s ease-out, margin 0.2s ease-out, opacity 0.2s ease-out !important;
+}
+
+#nav-bar:hover .webextension-browser-action,
+#nav-bar-customization-target:hover .webextension-browser-action {
+  max-width: 32px !important;
+  padding-inline: var(--toolbarbutton-inner-padding, 6px) !important;
+  margin-inline: 2px !important;
+  opacity: 1 !important;
+}
+
+/* ============================================================================
+   FEATURE 3: FLOATING FINDBAR
+   ============================================================================ */
+
+findbar {
+  position: absolute !important;
+  top: var(--findbar-top) !important;
+  left: var(--findbar-right) !important;
+  right: var(--findbar-right) !important;
+  width: var(--findbar-width-use) !important;
+  max-width: var(--findbar-max-width) !important;
+  margin-left: auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2) !important;
+  opacity: 1 !important;
+  transform-origin: top !important;
+  transform: scaleY(1) translateY(0px) !important;
+  transition: opacity 100ms ease-out, transform 100ms ease-out, visibility 0s step-end !important;
+}
+findbar[hidden] {
+  opacity: 0 !important;
+  transform: scaleY(0.96) translateY(-4px) !important;
+  transition-delay: 0s, 0s, 100ms !important;
+}
+
+.findbar-textbox {
+  width: var(--textbox-width) !important;
+  min-width: var(--textbox-min-width) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.findbar-textbox:not([status]) {
+  background-color: transparent !important;
+}
+.findbar-textbox:not(:focus, [status]):hover {
+  background-color: var(--toolbar-field-background-color) !important;
+}
+
+label.found-matches {
+  position: absolute !important;
+  right: calc(100% - var(--textbox-width)) !important;
+  text-align: right !important;
+  margin: 0px !important;
+}
+
+.findbar-label:not(.found-matches) {
+  display: none !important;
+}
+
+.findbar-container > checkbox {
+  display: grid !important;
+  justify-items: center !important;
+  margin-left: 0px !important;
+  overflow: hidden !important;
+}
+.findbar-container > checkbox *{
+  display: none !important;
+}
+
+.findbar-highlight {
+  order: var(--highlight-all-position) !important;
+  width: calc(30px * var(--show-highlight-all)) !important;
+  height: calc(24px * var(--show-highlight-all)) !important;
+  margin-right: calc(4px * var(--show-highlight-all)) !important;
+}
+.findbar-case-sensitive {
+  order: var(--match-case-position) !important;
+  width: calc(30px * var(--show-match-case)) !important;
+  height: calc(24px * var(--show-match-case)) !important;
+  margin-right: calc(4px * var(--show-match-case)) !important;
+}
+.findbar-match-diacritics {
+  order: var(--match-diacritics-position) !important;
+  width: calc(30px * var(--show-match-diacritics)) !important;
+  height: calc(24px * var(--show-match-diacritics)) !important;
+  margin-right: calc(4px * var(--show-match-diacritics)) !important;
+}
+.findbar-entire-word {
+  order: var(--whole-words-position) !important;
+  width: calc(30px * var(--show-whole-words)) !important;
+  height: calc(24px * var(--show-whole-words)) !important;
+  margin-right: calc(4px * var(--show-whole-words)) !important;
+}
+.findbar-highlight::before {
+  content: "[ab]";
+  font-weight: bold;
+  color: var(--toolbar-color);
+}
+.findbar-case-sensitive::before {
+  content: "Aa";
+  font-weight: bold;
+  color: var(--toolbar-color);
+}
+.findbar-match-diacritics::before {
+  content: "aá";
+  font-weight: bold;
+  color: var(--toolbar-color);
+}
+.findbar-entire-word::before {
+  content: "ab";
+  font-weight: bold;
+  color: var(--toolbar-color);
+  grid-row: 1;
+  grid-column: 1;
+}
+.findbar-entire-word::after {
+  content: "";
+  width: 1.3em;
+  height: 0.2em;
+  margin-bottom: -1em;
+  border-left: 2px solid var(--toolbar-color);
+  border-right: 2px solid var(--toolbar-color);
+  border-bottom: 1px solid var(--toolbar-color);
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.findbar-container > checkbox:not([checked]):hover {
+  background-color: var(--toolbarbutton-hover-background) !important;
+  border-radius: 4px !important;
+}
+.findbar-container > checkbox[checked] {
+  background-color: var(--toolbarbutton-active-background) !important;
+  border-radius: 4px !important;
+}
+
+.findbar-closebutton {
+  margin-left: calc(4px * var(--show-margin)) !important;
+}
