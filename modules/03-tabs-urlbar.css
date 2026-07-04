@@ -206,6 +206,7 @@
 #urlbar-container {
   max-width: var(--uc-urlbar-max-width) !important;
   margin-inline: auto !important;
+  width: 100% !important;
 }
 
 
