@@ -6,72 +6,70 @@ A modular CSS customization system that makes Firefox look and feel significantl
 
 ```
 chrome/
-├── userChrome.css              ← Main entry (imports only)
-├── userContent.css             ← Content styles (imports only)
+├── userChrome.css              <- Main entry (imports only)
+├── userContent.css             <- Content styles (imports only)
 └── modules/
-    ├── 01-variables.css        ← All design tokens + animations
-    ├── 02-toolbar.css          ← Toolbar, compact mode, buttons
-    ├── 03-tabs-urlbar.css      ← Tabs + URL bar + autocomplete
-    ├── 04-bookmarks-sidebar.css ← Bookmarks + sidebar
-    ├── 05-menus.css            ← Panels, popups, downloads, tooltips, findbar
-    ├── 06-contextmenu.css      ← Context menu cleanup + styling
-    ├── 07-internal-pages.css   ← about: pages + PDF viewer
-    ├── 08-websites.css         ← ChatGPT, GitHub, Reddit, Gmail
-    └── 09-extras.css           ← Fullscreen, scrollbars, PiP, Ctrl+Tab
+    ├── 01-variables.css        <- All design tokens + animations
+    ├── 02-toolbar.css          <- Toolbar, compact mode, buttons
+    ├── 03-tabs-urlbar.css      <- Tabs + URL bar + autocomplete (Disabled by default)
+    ├── 04-bookmarks-sidebar.css <- Bookmarks + sidebar
+    ├── 05-menus.css            <- Panels, popups, downloads, tooltips, findbar
+    ├── 06-contextmenu.css      <- Context menu cleanup + styling
+    ├── 07-internal-pages.css   <- about: pages + PDF viewer
+    ├── 08-websites.css         <- ChatGPT, GitHub, Reddit, Gmail
+    ├── 09-extras.css           <- Fullscreen, scrollbars, PiP, Ctrl+Tab
+    └── 10-foxone-features.css  <- Dynamic tabs, hover-reveal icons, floating find bar
 ```
 
 ## Features
 
 ### UI
-- ✅ Compact mode (one variable switch)
-- ✅ Very compact mode (28px height)
-- ✅ Centered URL bar
-- ✅ Floating URL bar (shadow + rounded)
-- ✅ Smooth bookmark toolbar animation
-- ✅ Rounded tabs (8px radius)
-- ✅ Narrower tabs
-- ✅ Better active tab (subtle elevation)
-- ✅ Better hover effects everywhere
-- ✅ Acrylic menus (blur + transparency)
-- ✅ Rounded menus (10px radius)
-- ✅ Better context menus
-- ✅ Better toolbar spacing
-- ✅ Better extension popup
-- ✅ Better download popup
-- ✅ Better bookmark menus
-- ✅ Better overflow menu
-- ✅ Better identity popup
-- ✅ Better permission dialogs
-- ✅ Better Ctrl+Tab switcher
-- ✅ Better bookmark star animation
-- ✅ Better Picture-in-Picture button
-- ✅ Better extension badges
-- ✅ Better tab preview panel
+- Compact mode (one variable switch)
+- Very compact mode (28px height)
+- Smooth bookmark toolbar animation
+- Dynamic tabs (expand on hover/focus)
+- Hover-reveal for pinned extensions
+- Hover-reveal for URL bar icons (reader mode, translation, etc.)
+- Better hover effects everywhere
+- Acrylic menus (blur + transparency)
+- Rounded menus (10px radius)
+- Better context menus
+- Better toolbar spacing
+- Better extension popup
+- Better download popup
+- Better bookmark menus
+- Better overflow menu
+- Better identity popup
+- Better permission dialogs
+- Better Ctrl+Tab switcher
+- Better bookmark star animation
+- Better Picture-in-Picture button
+- Better extension badges
+- Better tab preview panel
 
 ### Animations
-- ✅ Smooth everywhere (150ms/200ms/300ms)
-- ✅ Better fullscreen transition
-- ✅ Sidebar animation
-- ✅ Hover transitions
-- ✅ URL bar focus animation
-- ✅ Tab close button fade
-- ✅ Panel opening animation (scale-in)
-- ✅ Find bar slide-up
-- ✅ Bookmark toolbar slide-down
-- ✅ Download indicator pulse
+- Smooth everywhere (150ms/200ms/300ms)
+- Better fullscreen transition
+- Sidebar animation
+- Hover transitions
+- Tab close button fade
+- Panel opening animation (scale-in)
+- Floating find bar (top right)
+- Bookmark toolbar slide-down
+- Download indicator pulse
 
 ### Internal Pages
-- ✅ about:config (rounded search, better tables)
-- ✅ about:preferences (rounded categories, inputs)
-- ✅ about:support (better tables, copy buttons)
-- ✅ about:downloads (rounded items, progress bars)
-- ✅ PDF viewer (rounded toolbar buttons)
+- about:config (rounded search, better tables)
+- about:preferences (rounded categories, inputs)
+- about:support (better tables, copy buttons)
+- about:downloads (rounded items, progress bars)
+- PDF viewer (rounded toolbar buttons)
 
 ### Websites
-- ✅ ChatGPT (code blocks, inputs, scrollbars)
-- ✅ GitHub (code font, buttons, avatars)
-- ✅ Reddit (post cards, inputs, threads)
-- ✅ Gmail (compose button, email rows, search)
+- ChatGPT (code blocks, inputs, scrollbars)
+- GitHub (code font, buttons, avatars)
+- Reddit (post cards, inputs, threads)
+- Gmail (compose button, email rows, search)
 
 ## Installation & Setup
 
@@ -111,7 +109,7 @@ To enable the premium Windows 11 Mica translucent window effect:
    widget.windows.mica
    ```
 2. Double-click it to change its value to **`true`**.
-3. Go to Firefox menu ☰ → **Add-ons and Themes** → **Themes** and ensure you are using the **System theme — auto** or the default **Dark** theme. (For more details, check `docs/about-config-guide.md`).
+3. Go to Firefox menu -> **Add-ons and Themes** -> **Themes** and ensure you are using the **System theme — auto** or the default **Dark** theme. (For more details, check `docs/about-config-guide.md`).
 
 ### Step 5: Restart Firefox
 1. Close all open Firefox windows.
@@ -133,7 +131,6 @@ Open `modules/01-variables.css` and change values at the top:
 ```css
 :root {
   --uc-tab-height: 28px;        /* Very compact */
-  --uc-radius-urlbar: 16px;     /* More rounded URL bar */
   --uc-animation-multiplier: 0; /* Disable all animations */
 }
 ```
@@ -153,16 +150,16 @@ When Firefox updates:
 | No changes visible | Ensure `toolkit.legacyUserProfileCustomizations.stylesheets` is `true` in `about:config`, then restart Firefox |
 | Blur not working | Enable `widget.windows.mica` settings — see `about-config-guide.md` |
 | Tabs look wrong after update | Use Browser Toolbox to check if `.tab-background` selector changed |
-| Context menu items still showing | Clear Firefox startup cache: Help → More Troubleshooting → Clear Startup Cache |
+| Context menu items still showing | Clear Firefox startup cache: Help -> More Troubleshooting -> Clear Startup Cache |
 | Scrollbar too thin/thick | Adjust `--uc-scrollbar-width` in `01-variables.css` |
 
 ## Firefox Compatibility
 
 | Version | Status |
 |---|---|
-| Firefox 152 (current) | ✅ Fully tested |
-| Firefox 138–151 | ⚠️ Should work, Mica/Acrylic may differ |
-| Firefox < 138 | ❌ No Mica support, some selectors may differ |
+| Firefox 152 (current) | Fully tested |
+| Firefox 138-151 | Should work, Mica/Acrylic may differ |
+| Firefox < 138 | No Mica support, some selectors may differ |
 
 ## FAQ
 
@@ -173,4 +170,4 @@ A: No. This only affects browser chrome appearance, not extension functionality.
 A: Yes, but "System" theme works best for Mica/Acrylic transparency. Custom themes may override some colors.
 
 **Q: Does this affect performance?**
-A: Minimal impact. Blur is 8–12px (not excessive), no continuous animations, and we use `transform`/`opacity` for GPU-accelerated transitions.
+A: Minimal impact. Blur is 8-12px (not excessive), no continuous animations, and we use `transform`/`opacity` for GPU-accelerated transitions.
