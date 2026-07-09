@@ -30,12 +30,12 @@
    ============================================================================ */
 
 /* Tighter button padding in the nav bar */
-#nav-bar toolbarbutton {
+#nav-bar toolbarbutton:not(.titlebar-button) {
   padding: var(--uc-space-2) !important;
 }
 
 /* Reduce inner padding on toolbar button icons */
-#nav-bar .toolbarbutton-icon {
+#nav-bar toolbarbutton:not(.titlebar-button) .toolbarbutton-icon {
   padding: var(--uc-space-2) !important;
   width: 18px !important;
   height: 18px !important;
@@ -48,16 +48,16 @@
    ============================================================================ */
 
 /* Hover state for all toolbar buttons */
-#nav-bar toolbarbutton:not([disabled]):hover > .toolbarbutton-icon,
-#nav-bar toolbarbutton:not([disabled]):hover > .toolbarbutton-badge-stack {
+#nav-bar toolbarbutton:not(.titlebar-button, [disabled]):hover > .toolbarbutton-icon,
+#nav-bar toolbarbutton:not(.titlebar-button, [disabled]):hover > .toolbarbutton-badge-stack {
   background-color: var(--uc-hover-bg) !important;
   border-radius: var(--uc-radius-buttons) !important;
   transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
 }
 
 /* Active (pressed) state */
-#nav-bar toolbarbutton:not([disabled]):hover:active > .toolbarbutton-icon,
-#nav-bar toolbarbutton:not([disabled]):hover:active > .toolbarbutton-badge-stack {
+#nav-bar toolbarbutton:not(.titlebar-button, [disabled]):hover:active > .toolbarbutton-icon,
+#nav-bar toolbarbutton:not(.titlebar-button, [disabled]):hover:active > .toolbarbutton-badge-stack {
   background-color: var(--uc-active-bg) !important;
 }
 
