@@ -6,12 +6,6 @@
    3. Dynamic Tabs & Extension Hover-Reveal (Adapted for 2-line layout)
    ============================================================================ */
 
-:root {
-  /* Dynamic Tabs Variables */
-  --uc-active-tab-width: clamp(100px, 30vw, 190px);
-  --uc-inactive-tab-width: clamp(100px, 20vw, 120px);
-  --uc-tab-min-width: 76px;
-}
 
 /* ============================================================================
    FEATURE 1: DYNAMIC URL BAR HOVER-REVEAL ICONS
@@ -50,16 +44,6 @@
    FEATURE 2: DYNAMIC TABS & EXTENSION HOVER REVEAL
    ============================================================================ */
 
-/* Adaptive tab widths */
-.tabbrowser-tab[selected][fadein]:not([pinned]) {
-  max-width: var(--uc-active-tab-width) !important;
-}
-.tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
-  max-width: var(--uc-inactive-tab-width) !important;
-}
-.tabbrowser-tab[fadein]:not([pinned]) {
-  min-width: var(--uc-tab-min-width) !important;
-}
 
 /* Hide extension icons unless hovering over the navigation bar right-side */
 #nav-bar-customization-target > .webextension-browser-action {
