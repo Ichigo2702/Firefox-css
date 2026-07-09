@@ -127,7 +127,7 @@
   /* -- Acrylic / Transparency ----------------------------------------------- */
   --uc-acrylic-bg: color-mix(in srgb, var(--arrowpanel-background, Menu) 78%, transparent);
   --uc-acrylic-bg-hover: color-mix(in srgb, var(--arrowpanel-background, Menu) 88%, transparent);
-  --uc-acrylic-border: color-mix(in srgb, currentColor 8%, transparent);
+  --uc-acrylic-border: transparent;
 
   /* -- Common Colors (derived from Firefox native vars) --------------------- */
   --uc-hover-bg: color-mix(in srgb, currentColor 8%, transparent);
@@ -227,7 +227,7 @@
     --uc-shadow-opacity: 0.24;
     --uc-acrylic-bg: color-mix(in srgb, var(--arrowpanel-background, Menu) 72%, transparent);
     --uc-acrylic-bg-hover: color-mix(in srgb, var(--arrowpanel-background, Menu) 82%, transparent);
-    --uc-acrylic-border: color-mix(in srgb, currentColor 12%, transparent);
+    --uc-acrylic-border: transparent;
     --uc-hover-bg: color-mix(in srgb, currentColor 10%, transparent);
     --uc-hover-bg-strong: color-mix(in srgb, currentColor 15%, transparent);
     --uc-active-bg: color-mix(in srgb, currentColor 20%, transparent);
