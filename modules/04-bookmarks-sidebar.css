@@ -91,13 +91,13 @@
   box-shadow: var(--uc-shadow-2) !important;
 }
 
-#PlacesToolbarItems menupopup menuitem {
+#PlacesToolbarItems menupopup .bookmark-item {
   border-radius: var(--uc-radius-buttons) !important;
-  padding-block: var(--uc-space-4) !important;
+  padding-block: var(--uc-space-6) !important; /* increased from 4px to 6px for better breathing room */
   transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
 }
 
-#PlacesToolbarItems menupopup menuitem:hover {
+#PlacesToolbarItems menupopup .bookmark-item:is(:hover, [_moz-menuactive="true"]) {
   background-color: var(--uc-hover-bg) !important;
 }
 
