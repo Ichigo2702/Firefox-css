@@ -17,11 +17,12 @@
    ============================================================================ */
 
 /* Rounded context menus */
-menupopup {
+menupopup,
+.menupopup-arrowscrollbox {
   border-radius: var(--uc-radius-menus) !important;
   padding: var(--uc-space-4) !important;
   box-shadow: var(--uc-shadow-2) !important;
-  border: 1px solid var(--uc-acrylic-border) !important;
+  border: none !important;
 }
 
 /* Menu items — rounded hover, better padding */
