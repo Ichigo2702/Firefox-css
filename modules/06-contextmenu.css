@@ -186,14 +186,6 @@ menuseparator {
    LINK & IMAGE CONTEXT MENU — Item Cleanup
    ============================================================================ */
 
-/* Open Link in New Window */
-#context-openlink,
-#context-openlinknew,
-#context-openlink + menuseparator { display: none !important; }
-
-/* Open Link in Private Window */
-#context-openlinkprivate,
-#context-openlinkprivate + menuseparator { display: none !important; }
 
 /* Copy Clean Link */
 #context-copylink-no-tracking,
