@@ -8,5 +8,5 @@
 /* about:config, about:preferences, about:support, about:downloads, PDF viewer */
 @import url("modules/07-internal-pages.css");
 
-/* ChatGPT, GitHub, Reddit, Gmail */
-@import url("modules/08-websites.css");
+/* ChatGPT, GitHub, Reddit, Gmail
+@import url("modules/08-websites.css"); */
