@@ -83,3 +83,32 @@ The project uses a clean modular architecture centered around two entry styleshe
 2. **Verify Bookmarks Popups**:
    - Click any folder on the Bookmarks Toolbar (e.g. "Others" -> "Fedora"): The menu will now appear smoothly with clean rounded corners and no outer square box or ghost shadow background!
 
+---
+
+## 5. Multi-Account Git Configuration (`~/Documents/Projects`)
+
+Configured directory-scoped Git identity and credentials so that all projects under `/home/pvg/Documents/Projects` automatically use your personal GitHub account (`Ichigo2702`) without affecting your work account (`Pradyumnavg017`):
+
+1. **Created `~/.gitconfig-personal`**:
+   ```ini
+   [user]
+   	name = Ichigo2702
+   	email = pradyumnavg@gmail.com
+
+   [credential "https://github.com"]
+   	username = Ichigo2702
+
+   [credential "https://gist.github.com"]
+   	username = Ichigo2702
+   ```
+
+2. **Added Conditional Include in `~/.gitconfig`**:
+   ```ini
+   [includeIf "gitdir:~/Documents/Projects/"]
+   	path = ~/.gitconfig-personal
+   ```
+
+3. **Removed Repo Local Overrides**:
+   Cleaned repository-level `user.name` and `user.email` from `.git/config` so the directory-level configuration takes effect seamlessly.
+
+
