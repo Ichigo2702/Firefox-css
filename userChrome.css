@@ -10,7 +10,7 @@
 @import url("modules/01-variables.css");
 
 /* Toolbar, compact mode, button spacing */
-/* @import url("modules/02-toolbar.css"); */
+@import url("modules/02-toolbar.css");
 
 /* Tabs & URL bar */
 /* @import url("modules/03-tabs-urlbar.css"); */
@@ -19,13 +19,13 @@
 @import url("modules/04-bookmarks-sidebar.css");
 
 /* Panels, popups, downloads, tooltips, find bar */
-/* @import url("modules/05-menus.css"); */
+@import url("modules/05-menus.css");
 
 /* Context menu cleanup & styling */
-/* @import url("modules/06-contextmenu.css"); */
+@import url("modules/06-contextmenu.css");
 
 /* Fullscreen, scrollbars, PiP, Ctrl+Tab, extras */
-/* @import url("modules/09-extras.css"); */
+@import url("modules/09-extras.css");
 
 /* FoxOne Ported Features */
-/* @import url("modules/10-foxone-features.css"); */
+@import url("modules/10-foxone-features.css");
