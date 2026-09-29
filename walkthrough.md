@@ -137,5 +137,24 @@ To ensure the customization remains blazing-fast with **near-zero CPU and RAM ov
 5. **Automated Zero-Config Installer (`install.sh`)**:
    - Created [`install.sh`](file:///home/pvg/Documents/Projects/Firefox-css/install.sh) to automatically detect Firefox profiles across standard Linux/macOS directories, back up existing files, symlink `chrome`, and configure `user.js` in a single command.
 
+---
+
+## 7. Complete Documentation Synchronization
+
+All project documentation was audited, updated, and aligned with the latest architecture:
+
+1. **`README.md` & `docs/README.md`**:
+   - Added documentation for the 1-click automated installer (`./install.sh`).
+   - Added all new performance and UI features (soundplaying audio pulse, container tab pills, spotlight focus, vertical tabs, reduced motion guard).
+   - Updated compatibility matrix for Firefox 130–156+ on Linux, Windows, and macOS.
+2. **`docs/about-config-guide.md`**:
+   - Added preferences for native vertical tabs (`sidebar.revamp` and `sidebar.verticalTabs`).
+   - Documented the automated `user.js` setup.
+   - Added Linux/Wayland performance notes.
+3. **`docs/future-improvements.md`**:
+   - Created a "Recently Implemented Enhancements" section acknowledging completed features.
+   - Updated roadmap and known limitations.
+
+
 
 
