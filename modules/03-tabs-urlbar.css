@@ -134,7 +134,7 @@
 /* ============================================================================
    TABS — Audio Indicator
    ============================================================================
-   Better audio indicator styling.
+   Animated pulse for playing tabs (100% GPU composited, zero CPU load).
    ============================================================================ */
 
 .tab-icon-overlay[indicator-replaces-favicon] {
@@ -142,15 +142,61 @@
   padding: 2px !important;
 }
 
+/* Audio indicator animation while media is actively playing */
+.tab-icon-overlay[soundplaying] {
+  border-radius: var(--uc-radius-buttons) !important;
+  fill: var(--uc-accent-color) !important;
+  animation: uc-pulse 1.4s ease-in-out infinite !important;
+}
+
+.tab-icon-overlay[soundplaying]:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
 
 /* ============================================================================
-   TABS — Loading Spinner
+   TABS — Multi-Account Container Indicators
    ============================================================================
-   Smoother, thinner loading indicator.
+   Modern bottom pill indicator instead of harsh full-width line.
+   ============================================================================ */
+
+.tabbrowser-tab .tab-context-line {
+  height: 3px !important;
+  border-radius: 3px !important;
+  margin-block: 0 var(--uc-space-2) !important;
+  margin-inline: 18% !important;
+  opacity: 0.85 !important;
+}
+
+.tabbrowser-tab[selected] .tab-context-line {
+  height: 3px !important;
+  margin-inline: 12% !important;
+  opacity: 1 !important;
+}
+
+
+/* ============================================================================
+   TABS — Loading Indicator
+   ============================================================================
+   Smooth loading spinner + sleek linear bottom progress sweep.
    ============================================================================ */
 
 .tab-throbber[busy]::before {
   animation: uc-spinner 800ms linear infinite !important;
+}
+
+.tabbrowser-tab[busy] .tab-background::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 10% !important;
+  right: 10% !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+  background: linear-gradient(90deg, transparent, var(--uc-accent-color), transparent) !important;
+  background-size: 200% 100% !important;
+  animation: uc-tab-loading-sweep 1s linear infinite !important;
 }
 
 
@@ -302,4 +348,17 @@
 
 .urlbarView-type-icon {
   border-radius: 4px !important;
+}
+
+
+/* ============================================================================
+   URL BAR — Spotlight Focus Effect
+   ============================================================================
+   Subtly dims non-essential elements when the URL bar is focused.
+   GPU accelerated opacity transition.
+   ============================================================================ */
+
+#navigator-toolbox:has(#urlbar[focused="true"]) .tabbrowser-tab:not([selected]) {
+  opacity: 0.65 !important;
+  transition: opacity var(--uc-duration-fast) var(--uc-ease-standard) !important;
 }
