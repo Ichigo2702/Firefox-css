@@ -215,6 +215,26 @@
   100% { transform: scale(1); }
 }
 
+/* Audio playing equalizer pulse (100% GPU accelerated transforms) */
+@keyframes uc-equalizer-1 {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+@keyframes uc-equalizer-2 {
+  0%, 100% { transform: scaleY(0.8); }
+  50%      { transform: scaleY(0.25); }
+}
+@keyframes uc-equalizer-3 {
+  0%, 100% { transform: scaleY(0.4); }
+  50%      { transform: scaleY(0.9); }
+}
+
+/* Tab loading progress sweep (lightweight gradient movement) */
+@keyframes uc-tab-loading-sweep {
+  0%   { background-position: -150% 0; }
+  100% { background-position: 150% 0; }
+}
+
 
 /* ============================================================================
    DARK MODE ADJUSTMENTS
@@ -233,3 +253,28 @@
     --uc-active-bg: color-mix(in srgb, currentColor 20%, transparent);
   }
 }
+
+
+/* ============================================================================
+   ACCESSIBILITY & REDUCED MOTION
+   ============================================================================
+   Disables all transitions/animations instantly if requested by OS.
+   Saves CPU/GPU cycles for performance-sensitive or accessible setups.
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --uc-animation-multiplier: 0 !important;
+    --uc-duration-micro: 0ms !important;
+    --uc-duration-fast: 0ms !important;
+    --uc-duration-normal: 0ms !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
