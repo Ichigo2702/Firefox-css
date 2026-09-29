@@ -91,21 +91,38 @@
    BOOKMARKS — Folder Popup
    ============================================================================
    Rounded bookmark folder dropdown menus.
+   Removes square window-surface artifacts and shadows on Linux.
    ============================================================================ */
 
-#PlacesToolbarItems menupopup {
-  border-radius: var(--uc-radius-menus) !important;
-  padding: var(--uc-space-4) !important;
-  box-shadow: var(--uc-shadow-2) !important;
+#PlacesToolbarItems menupopup,
+#BMB_bookmarksPopup {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  --panel-shadow: none !important;
+  --panel-border-radius: var(--uc-radius-menus) !important;
 }
 
-#PlacesToolbarItems menupopup .bookmark-item {
+#PlacesToolbarItems menupopup .menupopup-arrowscrollbox,
+#BMB_bookmarksPopup .menupopup-arrowscrollbox {
+  border-radius: var(--uc-radius-menus) !important;
+  padding: var(--uc-space-4) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--uc-separator-color) !important;
+}
+
+#PlacesToolbarItems menupopup .bookmark-item,
+#BMB_bookmarksPopup .bookmark-item {
   border-radius: var(--uc-radius-buttons) !important;
   padding-block: var(--uc-space-6) !important; /* increased from 4px to 6px for better breathing room */
   transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
 }
 
-#PlacesToolbarItems menupopup .bookmark-item:is(:hover, [_moz-menuactive="true"]) {
+#PlacesToolbarItems menupopup .bookmark-item:is(:hover, [_moz-menuactive="true"]),
+#BMB_bookmarksPopup .bookmark-item:is(:hover, [_moz-menuactive="true"]) {
   background-color: var(--uc-hover-bg) !important;
 }
 
