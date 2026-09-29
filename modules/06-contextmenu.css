@@ -16,13 +16,22 @@
    Rounded, padded, with modern hover states.
    ============================================================================ */
 
-/* Rounded context menus */
-menupopup,
+/* Rounded context menus — eliminate square window artifacts on Linux */
+menupopup {
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  --panel-shadow: none !important;
+}
+
 .menupopup-arrowscrollbox {
   border-radius: var(--uc-radius-menus) !important;
   padding: var(--uc-space-4) !important;
-  box-shadow: var(--uc-shadow-2) !important;
-  border: none !important;
+  box-shadow: none !important;
+  border: 1px solid var(--uc-separator-color) !important;
 }
 
 /* Menu items — rounded hover, better padding */
