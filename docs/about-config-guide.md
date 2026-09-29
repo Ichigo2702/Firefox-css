@@ -2,11 +2,27 @@
 
 Recommended `about:config` tweaks for the best experience with this theme.
 
+> [!TIP]
+> If you run `./install.sh`, the required `toolkit.legacyUserProfileCustomizations.stylesheets` preference is added automatically to your `user.js` file.
+
+---
+
 ## Required Settings
 
 | Setting | Default | Recommended | Why | Side Effects |
 |---|---|---|---|---|
 | `toolkit.legacyUserProfileCustomizations.stylesheets` | `false` | `true` | Enables `userChrome.css` and `userContent.css` loading | None |
+
+---
+
+## Native Vertical Tabs & Sidebar (Firefox 130+)
+
+| Setting | Default | Recommended | Why | Side Effects |
+|---|---|---|---|---|
+| `sidebar.revamp` | `false` | `true` | Enables modern revamped collapsible sidebar | Replaces legacy sidebar UI |
+| `sidebar.verticalTabs` | `false` | `true` | Enables native Firefox vertical tabs (styled by Module 04) | Moves horizontal tabs to sidebar |
+
+---
 
 ## Mica / Acrylic Transparency (Windows 11)
 
@@ -17,6 +33,11 @@ Recommended `about:config` tweaks for the best experience with this theme.
 | `widget.windows.mica.popups` | `0` | `2` | Enables Acrylic blur on popup panels and menus. `1`=Mica, `2`=Acrylic | Popup rendering may be slightly slower |
 | `browser.tabs.allow_transparent_browser` | `false` | `true` | Allows transparent backgrounds on browser areas | None |
 
+> [!NOTE]
+> On Linux (Wayland / X11), native `color-mix()` backgrounds are used automatically. Windows-specific `widget.windows.mica` settings are ignored on Linux with zero performance impact.
+
+---
+
 ## UI Density & Layout
 
 | Setting | Default | Recommended | Why | Side Effects |
@@ -24,12 +45,7 @@ Recommended `about:config` tweaks for the best experience with this theme.
 | `browser.compactmode.show` | `false` | `true` | Shows "Compact" option in Customize → Density | None |
 | `browser.uidensity` | `0` | `0` (normal) or `1` (compact) | Sets UI density. Our CSS handles compactness via variables instead | May conflict with our `--uc-tab-height` if set to compact |
 
-## Context Menu Cleanup (Optional)
-
-| Setting | Default | Recommended | Why | Side Effects |
-|---|---|---|---|---|
-| `privacy.query_stripping.strip_on_share.enabled` | `true` | `false` | Removes "Copy Clean Link" from context menu (already hidden by CSS) | Disables the actual feature too |
-| `browser.search.visualSearch.featureGate` | `true` | `false` | Removes "Search Image with Google Lens" from context menu | Disables visual search entirely |
+---
 
 ## Tab Behavior
 
@@ -39,24 +55,32 @@ Recommended `about:config` tweaks for the best experience with this theme.
 | `browser.tabs.hoverPreview.enabled` | `true` | `true` | Shows tab preview on hover (styled by our theme) | Minor memory usage |
 | `browser.tabs.hoverPreview.showThumbnails` | `true` | `true` | Shows page thumbnails in tab preview | More memory for thumbnails |
 
-## Performance
+---
+
+## Performance & Rendering
 
 | Setting | Default | Recommended | Why | Side Effects |
 |---|---|---|---|---|
-| `gfx.webrender.all` | `true` | `true` | Hardware-accelerated rendering (needed for blur/animations) | May cause issues on very old GPUs |
-| `layers.acceleration.force-enabled` | `false` | `true` | Forces GPU acceleration for smoother animations | May cause issues on some systems |
+| `gfx.webrender.all` | `true` | `true` | Hardware-accelerated rendering (needed for blur/animations) | Recommended on modern GPUs |
+| `layers.acceleration.force-enabled` | `false` | `true` | Forces GPU acceleration for smoother animations | May cause issues on very old drivers |
 
-## Privacy (Optional)
+---
+
+## Context Menu & Toolbar Cleanup (Optional)
 
 | Setting | Default | Recommended | Why | Side Effects |
 |---|---|---|---|---|
+| `privacy.query_stripping.strip_on_share.enabled` | `true` | `false` | Removes "Copy Clean Link" from context menu (already hidden by CSS) | Disables the actual feature too |
+| `browser.search.visualSearch.featureGate` | `true` | `false` | Removes "Search Image with Google Lens" from context menu | Disables visual search entirely |
 | `browser.tabs.firefox-view` | `true` | `false` | Hides Firefox View button (saves toolbar space) | Removes Firefox View feature |
 | `extensions.pocket.enabled` | `true` | `false` | Removes Pocket from toolbar and context menus | Disables Pocket entirely |
 
-## Theme
+---
+
+## Theme Selection
 
 | Setting | Default | Recommended | Why | Side Effects |
 |---|---|---|---|---|
-| Use System theme | - | **Yes** | System theme works best with Mica/Acrylic transparency | Custom themes may override colors |
+| Use System theme | - | **Yes** | Adapts seamlessly with system accent colors and dark/light modes | Custom themes may override colors |
 
-To set: Go to `about:addons` → Themes → Enable "System theme — auto"
+To set: Go to `about:addons` → **Themes** → Enable **"System theme — auto"**
