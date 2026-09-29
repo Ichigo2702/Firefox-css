@@ -82,3 +82,4 @@ The project uses a clean modular architecture centered around two entry styleshe
    - Close all running Firefox windows and relaunch it to reload `userChrome.css`.
 2. **Verify Bookmarks Popups**:
    - Click any folder on the Bookmarks Toolbar (e.g. "Others" -> "Fedora"): The menu will now appear smoothly with clean rounded corners and no outer square box or ghost shadow background!
+
