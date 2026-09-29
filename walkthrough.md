@@ -155,6 +155,26 @@ All project documentation was audited, updated, and aligned with the latest arch
    - Created a "Recently Implemented Enhancements" section acknowledging completed features.
    - Updated roadmap and known limitations.
 
+---
+
+## 8. Strict Module Isolation (Only Module 04 Active)
+
+As requested, all non-bookmark modules have been disabled in the active browser entry points. Only Module 04 and its base design tokens are loaded:
+
+* **[`userChrome.css`](file:///home/pvg/Documents/Projects/Firefox-css/userChrome.css)**:
+  - `@import url("modules/01-variables.css");` — **Active** (required tokens & animations)
+  - `/* @import url("modules/02-toolbar.css"); */` — **Disabled**
+  - `/* @import url("modules/03-tabs-urlbar.css"); */` — **Disabled**
+  - `@import url("modules/04-bookmarks-sidebar.css");` — **Active** (Bookmarks & Sidebar only)
+  - `/* @import url("modules/05-menus.css"); */` — **Disabled**
+  - `/* @import url("modules/06-contextmenu.css"); */` — **Disabled**
+  - `/* @import url("modules/09-extras.css"); */` — **Disabled**
+  - `/* @import url("modules/10-foxone-features.css"); */` — **Disabled**
+* **[`userContent.css`](file:///home/pvg/Documents/Projects/Firefox-css/userContent.css)**:
+  - `/* @import url("modules/07-internal-pages.css"); */` — **Disabled**
+  - `/* @import url("modules/08-websites.css"); */` — **Disabled**
+
+
 
 
 
