@@ -1,26 +1,23 @@
 # Future Improvements
 
-Features that are planned, skipped, waiting on Firefox changes, or intentionally omitted.
+Features that are recently implemented, planned, skipped, or intentionally omitted.
 
-## Features Waiting on Firefox Changes
+---
 
-| Feature | Reason | Firefox Bug / Status | Expected |
+## Recently Implemented Enhancements
+
+| Feature | Module | Status | Notes |
 |---|---|---|---|
-| Native CSS nesting in userChrome | Firefox supports it in web content but behavior in chrome CSS is inconsistent | Gecko engine limitation | Future releases |
-| `backdrop-filter` in chrome context | Works inconsistently for browser UI elements; we use native Mica/Acrylic instead | Performance concerns | May improve with WebRender updates |
-| Container tab indicator styling | Container tab colors use internal APIs that CSS can't fully override | Missing CSS hooks | Unknown |
+| **Automated Installer** | `install.sh` | **Completed** | Auto-detects profile, creates symlinks, enables `user.js` |
+| **Linux/Wayland Hardening** | `04-bookmarks-sidebar`, `05-menus`, `06-contextmenu` | **Completed** | Fixed square native window backing/shadow artifacts on popups |
+| **Tab Audio Playing Equalizer** | `03-tabs-urlbar` | **Completed** | GPU-composited 3-bar pulse on soundplaying tabs |
+| **Container Tab Indicators** | `03-tabs-urlbar` | **Completed** | Centered bottom pill indicator replacing harsh top line |
+| **Spotlight Focus Effect** | `03-tabs-urlbar` | **Completed** | Modern CSS `:has()` dimming on inactive tabs when URL bar is focused |
+| **Animated Tab Loading Sweep** | `03-tabs-urlbar` | **Completed** | Sleek linear bottom sweep line during page loading |
+| **Native Vertical Tabs Styling** | `04-bookmarks-sidebar` | **Completed** | Styled Firefox 130+ revamped sidebar and vertical tabs |
+| **Accessibility & Reduced Motion** | `01-variables.css` | **Completed** | `@media (prefers-reduced-motion: reduce)` zero-delay guard |
 
-## Features Intentionally Omitted
-
-| Feature | Reason |
-|---|---|
-| Tree-style vertical tabs | Requires extension (Sidebery/TST); our sidebar module works alongside them |
-| Custom new tab page | Separate project scope; use extensions like Tabliss or Nighttab |
-| Custom start page | Same as above |
-| Arc-style vertical sidebar tabs | Conflicts with Firefox identity design goal |
-| Edge-style rounded window frame | OS-level window management, not CSS-controllable |
-| Custom icon replacements | SVG icon overrides are fragile across updates |
-| Tab grouping visual redesign | Firefox's tab groups UI changes frequently; our styling is minimal to avoid breakage |
+---
 
 ## Planned Enhancements
 
@@ -31,28 +28,51 @@ Features that are planned, skipped, waiting on Firefox changes, or intentionally
 | Better about:newtab | Low | 07-internal-pages | New tab page styling (activity stream) |
 | YouTube website styles | Medium | 08-websites | Dark mode, player controls, comments |
 | Twitter/X website styles | Low | 08-websites | Dark mode, spacing |
-| Animated tab loading gradient | Medium | 03-tabs-urlbar | Gradient sweep instead of spinner |
 | Better tab group colors | Medium | 03-tabs-urlbar | Waiting for tab groups to stabilize |
-| Sidebar auto-collapse | Medium | 04-bookmarks-sidebar | Auto-hide sidebar to icon-only mode |
 | Better reader mode styling | Low | New module | Reader mode has its own content doc |
+
+---
+
+## Features Waiting on Firefox Changes
+
+| Feature | Reason | Firefox Bug / Status | Expected |
+|---|---|---|---|
+| Native CSS nesting in userChrome | Firefox supports it in web content but behavior in chrome CSS is inconsistent | Gecko engine limitation | Future releases |
+| `backdrop-filter` in chrome context | Works inconsistently for browser UI elements; we use hardware `color-mix()` instead | Performance concerns on Linux | May improve with WebRender updates |
+
+---
+
+## Features Intentionally Omitted
+
+| Feature | Reason |
+|---|---|
+| Custom new tab page | Separate project scope; use extensions like Tabliss or Nighttab |
+| Custom start page | Same as above |
+| Arc-style vertical sidebar tabs | Conflicts with Firefox identity design goal |
+| Edge-style rounded window frame | OS-level window management, not CSS-controllable |
+| Custom icon replacements | SVG icon overrides are fragile across updates |
+
+---
 
 ## Features Skipped (Low Value or High Risk)
 
 | Feature | Reason |
 |---|---|
-| Custom window title bar buttons | Windows handles these natively; CSS overrides are fragile |
+| Custom window title bar buttons | OS handles these natively; CSS overrides are fragile |
 | Auto-hide tab bar (single tab) | Significant UX change; better as a separate opt-in hack |
 | Tab bar at bottom of window | Major layout restructuring; breaks easily |
 | Menu bar customization | Very few users use the menu bar |
 | Multiple toolbar rows | Niche use case; breaks compact mode |
 | Status bar at bottom | Removed from Firefox; would require XUL overlay hacks |
 
-## Known Limitations
+---
 
-| Limitation | Workaround |
+## Known Limitations & Solutions
+
+| Limitation | Solution |
 |---|---|
-| Acrylic blur requires Windows 11 + native Mica flags | Falls back to solid backgrounds gracefully |
-| Context menu cleanup uses `!important` heavily | Necessary to override Firefox defaults; no clean alternative |
-| Website-specific styles may break when sites redesign | Each site section is independent; comment out individual `@-moz-document` blocks |
-| Some tooltip styles may not apply to all tooltip types | Firefox uses multiple tooltip implementations; we cover the most common |
+| Acrylic blur on Linux | Solved: High-performance `color-mix()` backgrounds provide clean semi-transparency without GPU stutter |
+| Square popup shadows on Linux | Solved: Decoupled `menupopup` from `.menupopup-arrowscrollbox` with zero-padding outer window rules |
+| Context menu cleanup uses `!important` | Necessary to override Firefox defaults; standard userChrome practice |
+| Website-specific styles may break when sites redesign | Each site section is independent; comment out individual `@-moz-document` blocks in `08-websites.css` |
 | PDF viewer styling is limited | pdf.js has restricted CSS customization; only toolbar buttons are styled |
