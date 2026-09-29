@@ -21,6 +21,7 @@
   --uc-autohide-delay: 300ms;
 
   max-height: 0 !important;
+  min-height: 0 !important;
   overflow: hidden !important;
   opacity: 0;
   transform: translateY(-4px);
@@ -43,6 +44,13 @@
   max-height: 40px !important;
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Prevent hiding while customizing toolbar */
+#navigator-toolbox[customizing] #PersonalToolbar {
+  max-height: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 
@@ -99,6 +107,32 @@
 
 #PlacesToolbarItems menupopup .bookmark-item:is(:hover, [_moz-menuactive="true"]) {
   background-color: var(--uc-hover-bg) !important;
+}
+
+
+/* ============================================================================
+   BOOKMARKS — Edit Panel & Star Button
+   ============================================================================
+   Enhanced styling for bookmark star button and edit bookmark dialog.
+   ============================================================================ */
+
+#editBookmarkPanel {
+  --panel-border-radius: var(--uc-radius-panels) !important;
+}
+
+#editBookmarkPanel .expander-up,
+#editBookmarkPanel .expander-down {
+  border-radius: var(--uc-radius-buttons) !important;
+}
+
+/* Bookmark star animation when bookmarking */
+#star-button[starred] {
+  animation: uc-star-fill var(--uc-duration-normal) var(--uc-ease-standard) !important;
+}
+
+/* Bookmarked star icon — accent color */
+#star-button[starred] image {
+  fill: var(--uc-accent-color) !important;
 }
 
 
@@ -163,6 +197,7 @@
    Rounded content area within sidebar.
    ============================================================================ */
 
-#sidebar {
+#sidebar,
+#sidebar-main {
   border-radius: var(--uc-radius-buttons) 0 0 var(--uc-radius-buttons) !important;
 }
