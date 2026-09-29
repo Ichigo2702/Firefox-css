@@ -14,22 +14,21 @@
    Applies to ALL arrow panels (app menu, extension popups, etc).
    ============================================================================ */
 
-/* Rounded panels with subtle shadow */
+/* Rounded panels with subtle modern border and zero square artifacts */
+panel[type="arrow"] {
+  --panel-shadow: none !important;
+}
+
 panel[type="arrow"]::part(content) {
   border-radius: var(--uc-radius-panels) !important;
-  box-shadow: var(--uc-shadow-2) !important;
-  border: 1px solid var(--uc-acrylic-border) !important;
+  box-shadow: none !important;
+  border: 1px solid var(--uc-separator-color) !important;
+  background-color: var(--uc-acrylic-bg) !important;
 }
 
-/* Panel open animation — scale in */
+/* Panel open animation — GPU-accelerated scale in */
 panel[type="arrow"][animate] {
   animation: uc-scale-in var(--uc-duration-fast) var(--uc-ease-decelerate) !important;
-}
-
-/* Better panel background for acrylic effect */
-panel[type="arrow"]::part(content) {
-  background-color: var(--uc-acrylic-bg) !important;
-  backdrop-filter: blur(var(--uc-blur-standard)) !important;
 }
 
 
