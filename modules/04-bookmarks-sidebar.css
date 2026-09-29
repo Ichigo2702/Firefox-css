@@ -218,3 +218,41 @@
 #sidebar-main {
   border-radius: var(--uc-radius-buttons) 0 0 var(--uc-radius-buttons) !important;
 }
+
+
+/* ============================================================================
+   SIDEBAR & VERTICAL TABS (Firefox 130+ Revamp)
+   ============================================================================
+   Modern styling for native vertical tabs and collapsible sidebar launcher.
+   ============================================================================ */
+
+/* Revamped sidebar main container */
+#sidebar-main,
+#sidebar-box[sidebarcommand*="vertical"] {
+  background-color: transparent !important;
+}
+
+/* Sidebar panel launcher buttons */
+#sidebar-main .subviewbutton,
+#sidebar-main toolbarbutton {
+  border-radius: var(--uc-radius-buttons) !important;
+  margin: var(--uc-space-2) !important;
+  transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#sidebar-main .subviewbutton:hover,
+#sidebar-main toolbarbutton:hover {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+#sidebar-main .subviewbutton[checked="true"],
+#sidebar-main toolbarbutton[checked="true"] {
+  background-color: var(--uc-active-bg) !important;
+  color: var(--uc-accent-color) !important;
+}
+
+/* Native vertical tabs tree padding */
+#vertical-tabs-container,
+.sidebar-placesTree {
+  padding: var(--uc-space-4) !important;
+}
