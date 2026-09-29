@@ -111,4 +111,31 @@ Configured directory-scoped Git identity and credentials so that all projects un
 3. **Removed Repo Local Overrides**:
    Cleaned repository-level `user.name` and `user.email` from `.git/config` so the directory-level configuration takes effect seamlessly.
 
+---
+
+## 6. Performance-First Enhancements & Feature Expansion
+
+To ensure the customization remains blazing-fast with **near-zero CPU and RAM overhead**, all new enhancements were engineered using strictly GPU-composited CSS properties (`transform` and `opacity`), eliminating layout reflows and unaccelerated filter rendering:
+
+1. **Accessibility & CPU Guard (`01-variables.css`)**:
+   - Added `@media (prefers-reduced-motion: reduce)`: Shuts down all transitions and animations instantly when requested by the OS.
+   - Added lightweight, GPU-composited keyframes for audio equalizers and tab loading progress sweeps.
+
+2. **Cross-Platform Panel Hardening (`05-menus.css`)**:
+   - Eliminated square background shadow artifacts across all arrow panels (`#appMenu-popup`, `#downloadsPanel`, `#notification-popup`).
+   - Removed unaccelerated `backdrop-filter: blur(...)` in favour of lightweight, high-performance semi-translucent `color-mix()` backgrounds.
+
+3. **Modern Tab & URL Bar Polish (`03-tabs-urlbar.css`)**:
+   - **Audio Equalizer Animation**: Replaced static sound icons with an animated 3-bar pulse (`.tab-icon-overlay[soundplaying]`) that runs strictly when audio is actively playing.
+   - **Container Tab Pills**: Modernized Multi-Account Container tabs with a sleek bottom pill indicator (`.tab-context-line`) instead of the harsh top border.
+   - **Spotlight Search Focus**: Subtly dims inactive tabs when the URL bar is focused using modern CSS `:has()`.
+   - **Tab Loading Sweep**: Added a sleek bottom progress sweep line on loading tabs.
+
+4. **Firefox 130+ Native Vertical Tabs & Revamped Sidebar (`04-bookmarks-sidebar.css`)**:
+   - Added modern styling for Firefox's native vertical tabs container (`#sidebar-main`, `#vertical-tabs-container`, `.sidebar-placesTree`) with refined padding and button hover states.
+
+5. **Automated Zero-Config Installer (`install.sh`)**:
+   - Created [`install.sh`](file:///home/pvg/Documents/Projects/Firefox-css/install.sh) to automatically detect Firefox profiles across standard Linux/macOS directories, back up existing files, symlink `chrome`, and configure `user.js` in a single command.
+
+
 
