@@ -154,18 +154,53 @@
   padding: var(--uc-space-4) !important;
   box-shadow: none !important;
   border: 1px solid var(--uc-separator-color) !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--uc-separator-color) transparent !important;
+  max-height: 80vh !important;
 }
 
 #PlacesToolbarItems menupopup .bookmark-item,
 #BMB_bookmarksPopup .bookmark-item {
   border-radius: var(--uc-radius-buttons) !important;
-  padding-block: var(--uc-space-6) !important; /* increased from 4px to 6px for better breathing room */
+  padding-block: var(--uc-space-6) !important;
   transition: background-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
 }
 
 #PlacesToolbarItems menupopup .bookmark-item:is(:hover, [_moz-menuactive="true"]),
 #BMB_bookmarksPopup .bookmark-item:is(:hover, [_moz-menuactive="true"]) {
   background-color: var(--uc-hover-bg) !important;
+}
+
+/* Icon breathing room in folder dropdown menus */
+#PlacesToolbarItems menupopup .bookmark-item > .menu-iconic-left,
+#BMB_bookmarksPopup .bookmark-item > .menu-iconic-left {
+  padding-inline-end: var(--uc-space-6) !important;
+}
+
+/* Clean dividers inside bookmark popups */
+#PlacesToolbarItems menupopup menuseparator,
+#BMB_bookmarksPopup menuseparator {
+  appearance: none !important;
+  border: none !important;
+  height: 1px !important;
+  background-color: var(--uc-separator-color) !important;
+  margin: var(--uc-space-4) var(--uc-space-6) !important;
+  padding: 0 !important;
+}
+
+/* Submenu chevron indicators & cascading folders */
+#PlacesToolbarItems menupopup menu > .menu-right,
+#BMB_bookmarksPopup menu > .menu-right {
+  fill: currentColor !important;
+  opacity: 0.7 !important;
+  margin-inline-end: var(--uc-space-4) !important;
+  transition: opacity var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#PlacesToolbarItems menupopup menu:is(:hover, [_moz-menuactive="true"]) > .menu-right,
+#BMB_bookmarksPopup menu:is(:hover, [_moz-menuactive="true"]) > .menu-right {
+  opacity: 1 !important;
+  fill: var(--uc-accent-color) !important;
 }
 
 
