@@ -200,3 +200,37 @@ Created [`install.ps1`](file:///c:/Users/PVG/Documents/Projects/Firefox-css/inst
 1. Detects active profile from `profiles.ini` or `%APPDATA%\Mozilla\Firefox\Profiles\*.default-release`.
 2. Validates/creates `chrome` junction pointing to repo root.
 3. Automatically sets stylesheet and bookmarks toolbar visibility preferences in `user.js`.
+
+
+---
+
+## 10. Module 04 Bookmarks Polish (5 Core Enhancements)
+
+Applied five targeted polish commits to [`modules/04-bookmarks-sidebar.css`](file:///c:/Users/PVG/Documents/Projects/Firefox-css/modules/04-bookmarks-sidebar.css):
+
+1. **Commit 1 (`abf033c`) — Auto-Hide Ergonomics**:
+   - Added a `200ms` exit grace delay on `#PersonalToolbar` collapse so a 1-pixel cursor slip does not prematurely dismiss the bar.
+   - Immediate `0ms` response on hover enter.
+   - Added a smooth dock bottom border (`var(--uc-separator-color)`) when revealed.
+
+2. **Commit 2 (`ceaa44c`) — Bookmark Items & Favicons**:
+   - Micro-lift hover feedback (`translateY(-1px)`) and soft active press (`scale(0.98)`).
+   - Dynamic accent-tinted folder icons (`fill: var(--uc-accent-color)`).
+   - Smart text clipping with ellipsis (`max-width: 140px; text-overflow: ellipsis`).
+   - Slim vertical toolbar dividers (`1px` width, centered padding).
+
+3. **Commit 3 (`dc0253e`) — Folder Dropdown Menus (Popups)**:
+   - Thin modern scrollbars (`scrollbar-width: thin`) for long bookmark folders.
+   - Clean semi-translucent `menuseparator` dividers.
+   - Submenu chevrons with subtle opacity and accent highlight on hover.
+   - Favicon breathing room inside dropdown items.
+
+4. **Commit 4 (`84620f1`) — Star Button & Edit Dialog**:
+   - Star button hover scale (`1.12x`) and soft accent glow filter when starred.
+   - Modernized inputs, folder selector, and tag list in `#editBookmarkPanel` with rounded borders and accent focus states.
+   - Rounded action buttons in edit dialog.
+
+5. **Commit 5 (`af58e6e`) — Sidebar Search & Places Tree**:
+   - Modernized `#search-box` input with rounded border and accent focus ring.
+   - Comfortable `26px` row height in `.sidebar-placesTree` with rounded hover and active pill selection.
+   - Accent folder fill in sidebar places tree.
