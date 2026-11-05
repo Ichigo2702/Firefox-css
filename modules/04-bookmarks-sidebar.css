@@ -365,4 +365,54 @@
 #vertical-tabs-container,
 .sidebar-placesTree {
   padding: var(--uc-space-4) !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--uc-separator-color) transparent !important;
+}
+
+/* Bookmarks sidebar search box */
+#sidebar-search-container,
+#sidebar-box[sidebarcommand*="bookmarks"] #sidebar-search-container {
+  padding: var(--uc-space-4) var(--uc-space-6) !important;
+}
+
+#sidebar-search-container #search-box,
+#sidebar-box[sidebarcommand*="bookmarks"] #search-box {
+  appearance: none !important;
+  border-radius: var(--uc-radius-buttons) !important;
+  padding: var(--uc-space-4) var(--uc-space-8) !important;
+  border: 1px solid var(--uc-separator-color) !important;
+  background-color: var(--uc-surface-1, transparent) !important;
+  transition:
+    border-color var(--uc-duration-micro) var(--uc-ease-standard),
+    box-shadow var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#sidebar-search-container #search-box:focus,
+#sidebar-box[sidebarcommand*="bookmarks"] #search-box:focus {
+  border-color: var(--uc-accent-color) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--uc-accent-color) 25%, transparent) !important;
+  outline: none !important;
+}
+
+/* Bookmarks places tree row height, rounded hover, and selection */
+.sidebar-placesTree treechildren::-moz-tree-row {
+  min-height: 26px !important;
+  border-radius: var(--uc-radius-buttons) !important;
+  margin-block: 1px !important;
+}
+
+.sidebar-placesTree treechildren::-moz-tree-row(hover) {
+  background-color: var(--uc-hover-bg) !important;
+}
+
+.sidebar-placesTree treechildren::-moz-tree-row(selected) {
+  background-color: var(--uc-active-bg) !important;
+}
+
+.sidebar-placesTree treechildren::-moz-tree-cell-text(selected) {
+  color: var(--uc-accent-color) !important;
+}
+
+.sidebar-placesTree treechildren::-moz-tree-image(container) {
+  fill: var(--uc-accent-color) !important;
 }
