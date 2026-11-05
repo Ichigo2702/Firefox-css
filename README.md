@@ -6,7 +6,8 @@ A modular, lightweight CSS customization system that makes Firefox look and feel
 
 ```text
 Firefox-css/
-├── install.sh                  <- Automated zero-config installer
+├── install.ps1                 <- Automated installer for Windows (PowerShell)
+├── install.sh                  <- Automated zero-config installer for Linux & macOS
 ├── userChrome.css              <- Main browser chrome entry (imports only)
 ├── userContent.css             <- Content styles entry (about: pages, websites)
 ├── docs/                       <- Documentation & guides
@@ -26,7 +27,7 @@ Firefox-css/
 ## Features
 
 ### UI & Layout
-- **Automated Installer**: 1-click zero-config `install.sh` script for Linux and macOS.
+- **Automated Installer**: 1-click zero-config `install.ps1` (Windows) and `install.sh` (Linux/macOS).
 - **Cross-Platform Hardened**: Native styling on Linux (Wayland/X11) and Windows 11 with zero square window border artifacts on popups.
 - **Compact & Ultra-Compact Modes**: Single-variable switch (32px or 28px).
 - **Smooth Bookmarks Reveal**: Auto-hides bookmarks toolbar and slides down gracefully on hover.
@@ -57,9 +58,14 @@ Firefox-css/
 
 ## Installation & Setup
 
-### Method 1: Automated 1-Click Install (Recommended for Linux/macOS)
+### Method 1: Automated 1-Click Install
 
-Open a terminal in this repository and run:
+**On Windows (PowerShell):**
+```powershell
+.\install.ps1
+```
+
+**On Linux / macOS (Bash):**
 ```bash
 ./install.sh
 ```

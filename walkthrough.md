@@ -178,3 +178,25 @@ As requested, all non-bookmark modules have been disabled in the active browser 
 
 
 
+
+---
+
+## 9. Windows Environment Setup (Module 04 Bookmarks)
+
+### Active Profile Detection & Linking
+- **Platform**: Windows 11 Pro (Build 26300)
+- **Active Profile**: `C:\Users\PVG\AppData\Roaming\Mozilla\Firefox\Profiles\y10k2obc.default-release`
+- **Junction Established**: Created an NTFS Junction linking `chrome` directly to this repository:
+  ```powershell
+  C:\Users\PVG\AppData\Roaming\Mozilla\Firefox\Profiles\y10k2obc.default-release\chrome -> C:\Users\PVG\Documents\Projects\Firefox-css
+  ```
+- **Profile Preferences Configured (`user.js`)**:
+  - `user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);` — Enables loading of `userChrome.css`.
+  - `user_pref("browser.toolbars.bookmarks.visibility", "always");` — Keeps the Bookmarks Toolbar active so that CSS hover auto-hide functions across all pages.
+  - `user_pref("gfx.webrender.all", true);` — Hardware acceleration for smooth transitions.
+
+### Windows Automated Installer (`install.ps1`)
+Created [`install.ps1`](file:///c:/Users/PVG/Documents/Projects/Firefox-css/install.ps1) for native zero-config deployment on Windows:
+1. Detects active profile from `profiles.ini` or `%APPDATA%\Mozilla\Firefox\Profiles\*.default-release`.
+2. Validates/creates `chrome` junction pointing to repo root.
+3. Automatically sets stylesheet and bookmarks toolbar visibility preferences in `user.js`.

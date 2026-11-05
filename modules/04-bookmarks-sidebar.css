@@ -40,7 +40,8 @@
 }
 
 /* Prevent hiding while interacting with bookmark menus */
-#PersonalToolbar:focus-within {
+#PersonalToolbar:focus-within,
+#PersonalToolbar:has([open="true"]) {
   max-height: 40px !important;
   opacity: 1;
   transform: translateY(0);
