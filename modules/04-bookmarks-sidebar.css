@@ -18,17 +18,19 @@
 #PersonalToolbar {
   --uc-bm-height: 20px;
   --uc-bm-padding: var(--uc-space-4);
-  --uc-autohide-delay: 300ms;
+  --uc-autohide-delay: 200ms;
 
   max-height: 0 !important;
   min-height: 0 !important;
   overflow: hidden !important;
   opacity: 0;
   transform: translateY(-4px);
+  border-bottom: 1px solid transparent !important;
   transition:
-    max-height var(--uc-duration-normal) var(--uc-ease-decelerate),
-    opacity var(--uc-duration-fast) var(--uc-ease-standard),
-    transform var(--uc-duration-fast) var(--uc-ease-standard) !important;
+    max-height var(--uc-duration-normal) var(--uc-ease-decelerate) var(--uc-autohide-delay, 200ms),
+    opacity var(--uc-duration-fast) var(--uc-ease-standard) var(--uc-autohide-delay, 200ms),
+    transform var(--uc-duration-fast) var(--uc-ease-standard) var(--uc-autohide-delay, 200ms),
+    border-color var(--uc-duration-fast) var(--uc-ease-standard) var(--uc-autohide-delay, 200ms) !important;
 }
 
 /* Show on hover over entire toolbar area */
@@ -36,7 +38,8 @@
   max-height: 40px !important;
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0ms;
+  border-bottom-color: var(--uc-separator-color) !important;
+  transition-delay: 0ms !important;
 }
 
 /* Prevent hiding while interacting with bookmark menus */
@@ -45,6 +48,8 @@
   max-height: 40px !important;
   opacity: 1;
   transform: translateY(0);
+  border-bottom-color: var(--uc-separator-color) !important;
+  transition-delay: 0ms !important;
 }
 
 /* Prevent hiding while customizing toolbar */
@@ -52,6 +57,8 @@
   max-height: none !important;
   opacity: 1 !important;
   transform: none !important;
+  border-bottom-color: var(--uc-separator-color) !important;
+  transition-delay: 0ms !important;
 }
 
 
