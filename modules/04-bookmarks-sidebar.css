@@ -219,14 +219,47 @@
   border-radius: var(--uc-radius-buttons) !important;
 }
 
+/* Inputs, folder menu list, and tag pickers inside edit dialog */
+#editBookmarkPanel input,
+#editBookmarkPanel menulist,
+#editBMPanel_folderMenuList {
+  border-radius: var(--uc-radius-buttons) !important;
+  padding: var(--uc-space-4) var(--uc-space-6) !important;
+  border: 1px solid var(--uc-separator-color) !important;
+  transition: border-color var(--uc-duration-micro) var(--uc-ease-standard) !important;
+}
+
+#editBookmarkPanel input:focus,
+#editBookmarkPanel menulist[open="true"],
+#editBMPanel_folderMenuList[open="true"] {
+  border-color: var(--uc-accent-color) !important;
+  outline: none !important;
+}
+
+/* Action buttons inside edit panel */
+#editBookmarkPanelBottomButtons button {
+  border-radius: var(--uc-radius-buttons) !important;
+  padding: var(--uc-space-4) var(--uc-space-12) !important;
+}
+
+/* Star button interactive hover & starred glow */
+#star-button {
+  transition: transform var(--uc-duration-fast) var(--uc-ease-standard) !important;
+}
+
+#star-button:hover {
+  transform: scale(1.12) !important;
+}
+
 /* Bookmark star animation when bookmarking */
 #star-button[starred] {
   animation: uc-star-fill var(--uc-duration-normal) var(--uc-ease-standard) !important;
 }
 
-/* Bookmarked star icon — accent color */
+/* Bookmarked star icon — accent color with soft glow */
 #star-button[starred] image {
   fill: var(--uc-accent-color) !important;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--uc-accent-color) 65%, transparent)) !important;
 }
 
 
